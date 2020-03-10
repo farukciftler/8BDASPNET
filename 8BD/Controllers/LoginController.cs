@@ -13,7 +13,8 @@ namespace _8BD.Controllers
     public class LoginController : Controller
     {
         IConfiguration configuration;
-
+        const string SessionName = "_username";
+        const string SessionPass = "_password";
 
         public LoginController( IConfiguration configuration)
         {
@@ -34,9 +35,8 @@ namespace _8BD.Controllers
             if(token != null)
             {
                 // https://benjii.me/2016/07/using-sessions-and-httpcontext-in-aspnetcore-and-mvc-core/
-                HttpContext.Session.SetString("username", username);
-                HttpContext.Session.SetString("token", token);
-
+                HttpContext.Session.SetString(SessionName, username);
+                HttpContext.Session.SetString(SessionPass, token);
             }
             return Redirect("Home");
 
