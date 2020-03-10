@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - _8BD</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/dict.css" />
 </head>
 <body>
     <header>
@@ -25,12 +26,25 @@
                     <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li class="dropdown order-1">
+
                             @if (ViewBag.Name == null)
                             {
+                                <a> Register</a>
                                 <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
-                            }else
+                            }
+                            else
                             {
-                        <p> @ViewBag.Name </p>
+
+                                <div class="dropdown">
+                                    <button type="button" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">  @ViewBag.Name <span class="caret"></span></button>
+
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Link 1</a>
+                                        <a class="dropdown-item" href="#">Link 2</a>
+                                        <a class="dropdown-item" asp-controller="Login" asp-action="Logout">Logout</a>
+                                    </div>
+                                </div>
+
                             }
                             <ul class="dropdown-menu dropdown-menu-right mt-2">
                                 <li class="px-3 py-2">
@@ -39,7 +53,7 @@
                                             <input id="usernameInput" name="username" placeholder="Username" class="form-control form-control-sm" type="text" required="">
                                         </div>
                                         <div class="form-group">
-                                            <input id="passwordInput" name="password" placeholder="Password" class="form-control form-control-sm" type="text" required="">
+                                            <input id="passwordInput" name="password" type="password" placeholder="Password" class="form-control form-control-sm" type="text" required="">
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-block">Login</button>

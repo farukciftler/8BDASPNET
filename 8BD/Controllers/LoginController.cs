@@ -27,9 +27,7 @@ namespace _8BD.Controllers
         {
             IRestClient restClient = new RestClient();
             IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/login?username={username}&password={password}");
-
             var restResponse = restClient.Get(restRequest);
-            string response = restResponse.Content;
             var jObject = JObject.Parse(restResponse.Content);
             string token = jObject.GetValue("token").ToString();
             if(token != null)
@@ -40,6 +38,12 @@ namespace _8BD.Controllers
             }
             return Redirect("Home");
 
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return Redirect("../Home/Index");
         }
     }
 }
