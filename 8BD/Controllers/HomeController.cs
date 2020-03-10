@@ -34,7 +34,8 @@ namespace _8BD.Controllers
             IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/subjects");
             var restResponse = restClient.Get(restRequest);
             var subjects = JsonConvert.DeserializeObject<List<Subject>>(restResponse.Content);
-            ViewBag.Subject = subjects;
+            var deneme = subjects.OrderByDescending(x => x.updateDate);
+            ViewBag.Subject = deneme;
             ViewBag.Name = HttpContext.Session.GetString("_username");
             ViewBag.Pass = HttpContext.Session.GetString("_password");
             return View();
