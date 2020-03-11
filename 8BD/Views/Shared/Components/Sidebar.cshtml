@@ -1,0 +1,14 @@
+﻿@using RestSharp;
+@using Microsoft.Extensions.Options;
+@using _8BD.Configuration;
+@using _8BD.Helpers;
+@inject SidebarHelper helper;
+
+<h1 class="sidebar-header">subjects </h1>
+
+<br>
+
+@foreach (var item in helper.getSubjects() as IOrderedEnumerable<_8BD.Models.Subject>)
+{
+    <p class="sidebar-entryheaders"> <a href="http://localhost:64163/Subject?search=@item.subject"> @item.subject</a></p>
+}

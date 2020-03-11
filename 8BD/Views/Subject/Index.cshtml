@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Subject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Count != 0 && ViewData["Entries"] != null)
+{
+    <h1>@ViewBag.Subject</h1>
+    @foreach (var item in (IEnumerable<Entry>)ViewData["Entries"])
+    {
+
+
+        <p class="entry"> @item.entry</p>
+        <div class="row">
+            <p class="entry-date">@item.createDate</p> | <p>@item.authorId</p>
+        </div>
+
+        <hr class="entry-hr">
+    }
+    if (ViewBag.Name != null)
+    {
+        @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
+    }
+}
+else
+{
+    if (ViewBag.Name != null)
+    {
+        <h1>@ViewBag.Subject</h1>
+        @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
+    }
+    else if (ViewData["Entries"] != null)
+    {
+        <h1>@ViewBag.Subject</h1>
+        <h4>Böyle bir başlık bulunmamaktadır.</h4>
+        <h4>Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
+    }
+}

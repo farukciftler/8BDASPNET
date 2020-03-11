@@ -220,3 +220,10 @@ D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.Views.pdb
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.csproj.CopyComplete
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.dll
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.pdb
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Profile.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Index.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Index.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Footer.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Navbar.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Sidebar.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\DictComponents\EntryAdd.cshtml.g.cs

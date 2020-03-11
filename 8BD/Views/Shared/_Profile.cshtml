@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - _8BD</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/dict.css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        @await Html.PartialAsync("Components/Navbar")
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <img id="resim" src="~/assets/profile.jpg" alt="des" width="240" height="240" style=" min-width: 200px; min-height: 240px; margin-left:10%; margin-top:10%;">
+
+                    <br>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input style="max-width:100px; max-height:30px;" type="file" value="Dosya" name="fileToUpload" id="fileToUpload">
+                        <input style="max-width:100px; max-height:30px;" type="submit" value="Yükle" name="submit">
+                    </form>
+                    <p style="text-align:center; font-size:17px;">loquat</p>
+                    <p style="text-align:center; margin-top:-20px;">admin</p>
+                    <a href="" > <button style="width:100%;" type="button" class="btn btn-dark">Piştle!</button></a>
+                    <form class="" action="index.html" method="post">
+                        <a href=""> <button style="width:100%; margin-top:5px;" type="button" class="btn btn-primary">Ayar Çek</button></a>
+
+                    </form>
+                    <ul style="margin-top:10px; width:100%;" class="list-group">
+                        <li class="list-group-item profilistatistik profilistatistikheader">Yazar Tanımları</li>
+                        <a id="tumtanimlari"><li class="list-group-item profilistatistik">Tüm Tanımları</li></a>
+                        <a id="enbegenilenler"><li class="list-group-item profilistatistik">En Beğenilenler</li></a>
+                        <a id="enbegenilmeyenler"><li class="list-group-item profilistatistik">En Beğenilmeyenler</li></a>
+                        <a id="encokfavorilenenler"><li class="list-group-item profilistatistik">En Çok Favorilenenler</li></a>
+
+                    </ul>
+
+
+
+                    <ul style="margin-top:10px; width:100%;" class="list-group">
+                        <li class="list-group-item profilistatistik profilistatistikheader">Yazar İstatistikleri</li>
+                        <li class="list-group-item profilistatistik">Kayıt Tarihi: 10000</li>
+                        <li class="list-group-item profilistatistik">Tanım Sayısı: 10000</li>
+                        <li class="list-group-item profilistatistik">Başlık Sayısı: 10000</li>
+                        <li class="list-group-item profilistatistik">Karma: 10000</li>
+
+                        <li class="list-group-item profilistatistik">Porta ac consectetur ac</li>
+                        <li class="list-group-item profilistatistik">Vestibulum at eros</li>
+                    </ul>
+
+                </div>
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </main>
+    </div>
+
+    @await Html.PartialAsync("Components/Footer")
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Components/Scripts", required: false)
+</body>
+</html>

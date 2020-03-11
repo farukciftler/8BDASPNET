@@ -23,9 +23,32 @@
     font-family: monospace;
 }
 
+
 .sidebar-entryheaders {
     text-align: center;
     font-size: 13px;
     font-family: monospace;
     margin-top: -15px;
+}
+.profilistatistik:hover {
+    background-color: #f9f9f9;
+}
+
+.profilistatistik {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.profilistatistikheader {
+    border-bottom: 2px solid #1e211f;
+}
+.profilquote {
+    height: min-height:30px;
+    weight: 700px;
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
 }

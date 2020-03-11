@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using _8BD.Helpers;
 
 namespace _8BD.Controllers
 {
@@ -14,25 +15,23 @@ namespace _8BD.Controllers
     {
         IConfiguration configuration;
         const string SessionName = "_username";
-        const string SessionPass = "_password";
-
-        public LoginController( IConfiguration configuration)
+        const string SessionPass = "_token";
+        private readonly HttpHelper _helper;
+        public LoginController( IConfiguration configuration, HttpHelper helper)
         {
         
             this.configuration = configuration;
+            _helper = helper;
 
         }
         [HttpPost]
         public IActionResult Index(string username, string password)
         {
-            IRestClient restClient = new RestClient();
-            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/login?username={username}&password={password}");
-            var restResponse = restClient.Get(restRequest);
-            var jObject = JObject.Parse(restResponse.Content);
-            string token = jObject.GetValue("token").ToString();
+
+            var token = _helper.GetToken(username, password);
             if(token != null)
             {
-                // https://benjii.me/2016/07/using-sessions-and-httpcontext-in-aspnetcore-and-mvc-core/
+                //
                 HttpContext.Session.SetString(SessionName, username);
                 HttpContext.Session.SetString(SessionPass, token);
             }

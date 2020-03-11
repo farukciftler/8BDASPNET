@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using _8BD.Configuration;
+using _8BD.Helpers;
 namespace _8BD
 {
     public class Startup
@@ -22,10 +23,14 @@ namespace _8BD
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ApplicationConfigurations>
+      (Configuration.GetSection("ApplicationConfigurations"));
             services.AddControllersWithViews();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddSession();
+            services.AddScoped<SidebarHelper>();
+            services.AddScoped<HttpHelper>();
 
         }
 
