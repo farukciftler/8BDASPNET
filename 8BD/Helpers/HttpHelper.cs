@@ -53,12 +53,14 @@ namespace _8BD.Helpers
 
             return deserializedobject;
         }
-        public T PostMethod<T>(object obj, string uri, string bearerToken, Dictionary<string, string> headers = null)
+        public T PostMethod<T>(object obj, string uri, string bearerToken = null, Dictionary<string, string> headers = null)
         {
             var client = new RestClient(configuration["ApiAddress"] + uri);
             var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Json };
-            request.AddHeader("Authorization", string.Format("Bearer {0}", bearerToken));
-
+            if (bearerToken != null)
+            {
+                request.AddHeader("Authorization", string.Format("Bearer {0}", bearerToken));
+            }
             var result = GetResult<T>(client, request, obj, headers);
 
             return result;

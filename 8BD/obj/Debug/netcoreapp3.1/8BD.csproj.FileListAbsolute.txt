@@ -227,3 +227,4 @@ D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Compon
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Navbar.cshtml.g.cs
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Sidebar.cshtml.g.cs
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\DictComponents\EntryAdd.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Login\Register.cshtml.g.cs

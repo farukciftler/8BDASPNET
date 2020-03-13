@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using _8BD.Helpers;
+using _8BD.Models;
 
 namespace _8BD.Controllers
 {
@@ -44,5 +45,21 @@ namespace _8BD.Controllers
 
             return Redirect("../Home/Index");
         }
+        public IActionResult Register()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddUser(string username, string password, string email)
+        {
+            User user = new User();
+            user.username = username;
+            user.password = password;
+            user.email = email;
+            _helper.PostMethod<User>(user, "/Users");
+            return Redirect("../Home/Index");
+        }
+
     }
 }
