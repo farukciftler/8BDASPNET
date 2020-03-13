@@ -42,6 +42,23 @@ namespace _8BD.Helpers
 
             return deserializedobject;
         }
+        public string GetUsername(int userid)
+        {
+
+
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/users/userid/" + userid);
+            var restResponse = restClient.Get(restRequest);
+            var deserializedobject = "notfound";
+            if (restResponse.StatusCode.ToString() !="NotFound")
+            {
+                deserializedobject = JsonConvert.DeserializeObject<string>(restResponse.Content);
+                
+            }
+            
+   
+            return deserializedobject;
+        }
         public Subject GetApiEndpointSearch(string search)
         {
 

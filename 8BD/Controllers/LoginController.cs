@@ -28,7 +28,7 @@ namespace _8BD.Controllers
         [HttpPost]
         public IActionResult Index(string username, string password)
         {
-
+           
             var token = _helper.GetToken(username, password);
             if(token != null)
             {

@@ -1,7 +1,7 @@
 ﻿@using RestSharp;
-@using Microsoft.Extensions.Options;
-@using _8BD.Configuration;
 @using _8BD.Helpers;
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 @inject SidebarHelper helper;
 
 <h1 class="sidebar-header">subjects </h1>
@@ -10,5 +10,5 @@
 
 @foreach (var item in helper.getSubjects() as IOrderedEnumerable<_8BD.Models.Subject>)
 {
-    <p class="sidebar-entryheaders"> <a href="http://localhost:64163/Subject?search=@item.subject"> @item.subject</a></p>
+    <p class="sidebar-entryheaders"> <a href="@Configuration["AppHost"]/Subject?search=@item.subject"> @item.subject</a></p>
 }

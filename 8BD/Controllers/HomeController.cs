@@ -19,6 +19,7 @@ namespace _8BD.Controllers
     public class HomeController : Controller
     {
         IConfiguration configuration;
+        
         public HomeController(IConfiguration configuration)
         {
 
@@ -28,7 +29,7 @@ namespace _8BD.Controllers
 
         public IActionResult Index()
         {
-
+            
             ViewBag.Name = HttpContext.Session.GetString("_username");
             ViewBag.Pass = HttpContext.Session.GetString("_password");
             return View();
