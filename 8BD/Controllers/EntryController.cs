@@ -29,7 +29,8 @@ namespace _8BD.Controllers
             ent.subject = subject;
             var token = HttpContext.Session.GetString("_token");
             _helper.PostMethod<Entry>(ent, "/Entries", token);
-            return Redirect("Home");
+            var subjecturl = configuration["AppHost"] +"/subject?search="+subject;
+            return Redirect(subjecturl);
         }
     }
 }

@@ -13,9 +13,20 @@
 .entry-date {
     text-align: right;
     font-size: 14px;
+    margin-left: 5px;
+}
+.entry-author{
+    font-size: 14px;
+    margin-right: 5px;
 }
 .entry-hr {
     margin-top: -13px;
+}
+.subject-header{
+    font-size: 18px;
+    font-family: monospace;
+    text-transform: lowercase;
+    margin-bottom: -10px;
 }
 .sidebar-header {
     text-align: center;
@@ -29,6 +40,7 @@
     font-size: 13px;
     font-family: monospace;
     margin-top: -15px;
+    font-family: monospace;
 }
 .profilistatistik:hover {
     background-color: #f9f9f9;
@@ -37,13 +49,14 @@
 .profilistatistik {
     font-size: 12px;
     font-weight: bold;
+    font-family: monospace;
 }
 
 .profilistatistikheader {
     border-bottom: 2px solid #1e211f;
 }
 .profilquote {
-    height: min-height:30px;
+    min-height:30px;
     weight: 700px;
     background: #f9f9f9;
     border-left: 10px solid #ccc;
@@ -51,4 +64,13 @@
     margin-bottom: 10px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
+}
+.nav-item{
+    font-family: monospace;
+}
+a{
+ color: #1e211f;   
+}
+.monospace{
+    font-family: monospace;
 }
