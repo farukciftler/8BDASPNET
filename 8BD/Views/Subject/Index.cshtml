@@ -19,7 +19,7 @@
        
         var c = @_helper.GetUsername(item.authorId);
         <p class="entry"> @item.entry</p>
-        <div class="row d-flex flex-row-reverse">
+        <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
             <p class="entry-date monospace">@item.createDate</p> | <p class="monospace entry-author">@if (c != null) { @c }</p>
         </div>
 

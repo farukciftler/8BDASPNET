@@ -24,6 +24,7 @@ namespace _8BD.Controllers
         {
 
             this.configuration = configuration;
+           
 
         }
 

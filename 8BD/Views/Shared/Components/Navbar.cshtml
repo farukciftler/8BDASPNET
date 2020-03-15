@@ -1,24 +1,28 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" role="navigation">
+﻿
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" role="navigation">
     <div class="container">
-        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><b>sinefilsozluk</b></a>
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><b><i class="fas fa-video"></i> filmcisozluk</b></a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             &#9776;
         </button>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link">güncel</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">hakkımızda</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">planlar</a></li>
-                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">vizyondakiler</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-comment-alt"></i> posta</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-quote-left"></i> blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i> duyurular</a></li>
+                
                 
             </ul>
-
+           
             <form class="form-inline" method="get" asp-controller="Subject" asp-action="Index">
+                <div style="display: flex; align-items: center;">
                 <input class="form-control mr-sm-2 search-input" type="search" placeholder="bulanlar arayanlardır..." name="search" id="search">
                 <button class="btn btn-light" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
+                </div>
             </form>
+            
 
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
 
@@ -26,8 +30,9 @@
 
                     @if (ViewBag.Name == null)
                     {
+                       
 
-                        <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">giriş <span class="caret"></span></button>
+                        <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle"><i class="fas fa-sign-in-alt"></i>    giriş <span class="caret"></span></button>
                     }
                     else
                     {
@@ -52,9 +57,11 @@
                                 <div class="form-group">
                                     <input id="passwordInput" name="password" type="password" placeholder="şifre" class="form-control form-control-sm" required="">
                                 </div>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-block">giriş</button>
                                 </div>
+                                
                                 <div class="form-group text-center">
                                     <small><a href="#">--şifremi unuttum--</a></small>
                                     <small><a asp-controller="Login" asp-action="Register">kayıt ol</a></small>
