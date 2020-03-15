@@ -2,7 +2,7 @@
 @inject HttpHelper _helper;
 
 @{
-    ViewData["Title"] = "Subject";
+    ViewData["Title"] = @ViewBag.Subject;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -28,6 +28,12 @@
     if (ViewBag.Name != null)
     {
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
+    }else
+    {
+        <br>
+       <div class="quote">    
+           <h4 class="subject-header">Tanım girebilmek için lütfen üye olunuz veya hesabınıza giriş yapınız.</h4>
+       </div>     
     }
 }
 else
