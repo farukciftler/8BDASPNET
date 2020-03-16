@@ -9,18 +9,20 @@
 @if (ViewBag.Count != 0 && ViewData["Entries"] != null)
 {
 
-    <h4 class="subject-header">@ViewBag.Subject</h4>
+    <h4 class="subject-header"><b>@ViewBag.Subject</b></h4>
     <hr>
-    
-    
+
+
+
     @foreach (var item in (IEnumerable<Entry>)ViewData["Entries"])
     {
-        
-       
+
+
         var c = @_helper.GetUsername(item.authorId);
         <p class="entry"> @item.entry</p>
         <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-            <p class="entry-date monospace">@item.createDate</p> | <p class="monospace entry-author">@if (c != null) { @c }</p>
+            <p class="entry-date monospace">@item.createDate.ToString("MM.dd.yyyy H:mm")</p> | <p class="monospace entry-author">@if (c != null)
+            {@c}</p>
         </div>
 
         <hr class="entry-hr">
@@ -28,25 +30,26 @@
     if (ViewBag.Name != null)
     {
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
-    }else
+    }
+    else
     {
         <br>
-       <div class="quote">    
-           <h4 class="subject-header">Tanım girebilmek için lütfen üye olunuz veya hesabınıza giriş yapınız.</h4>
-       </div>     
+        <div class="quote">
+            <h4 class="subject-header">Tanım girebilmek için lütfen üye olunuz veya hesabınıza giriş yapınız.</h4>
+        </div>
     }
 }
 else
 {
     if (ViewBag.Name != null)
     {
-       <h4 class="subject-header">@ViewBag.Subject</h4>
+        <h4 class="subject-header">@ViewBag.Subject</h4>
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
     }
     else if (ViewData["Entries"] != null)
     {
-      <h4 class="subject-header">@ViewBag.Subject</h4>
-      <br>
+        <h4 class="subject-header">@ViewBag.Subject</h4>
+        <br>
         <h4 class="monospace">Böyle bir başlık bulunmamaktadır.</h4>
         <h4 class="monospace">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
     }

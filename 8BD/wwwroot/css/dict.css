@@ -36,7 +36,7 @@
 
 
 .sidebar-entryheaders {
-    text-align: center;
+    text-align: left;
     font-size: 13px;
     font-family: monospace;
     margin-top: -15px;
@@ -78,3 +78,9 @@ a{
 .monospace{
     font-family: monospace;
 }
+.subject-buttons{
+    margin-top:-15px;
+    margin-bottom:20px;
+
+}
+
