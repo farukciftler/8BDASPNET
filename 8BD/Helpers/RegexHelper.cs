@@ -8,14 +8,33 @@ namespace _8BD.Helpers
 {
     public class RegexHelper
     {
-        public  List<string> patternss = new List<string> {
-        @"\(b: (\s?)*(?<bold>(.*?))\)"
-        };
-        public List<string> substitutions = new List<string> {
-        @"\2"
+        public String[] patterns = new String[2]
+         {
+             @"\(b: (\s?)*(?<bold>(.*?))\)",
+             @"\(i: (\s?)*(?<italic>(.*?))\)"
+
+
+         };
+        public String[] replacements = new String[2] 
+        {
+        @"<b>${bold}</b>",
+        @"<i>${italic}</i>"
         };
 
-        //https://regex101.com/r/Ai92e7/3
+
+        public  String PregReplace(String input, string[] pattern, string[] replacements)
+        {
+
+            if (replacements.Length != pattern.Length)
+                throw new ArgumentException("Replacement and Pattern Arrays must be balanced");
+
+            for (var i = 0; i < pattern.Length; i++)
+            {
+                input = Regex.Replace(input, pattern[i], replacements[i]);
+            }
+
+            return input;
+        }
 
 
     }
