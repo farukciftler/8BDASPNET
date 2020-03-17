@@ -1,7 +1,8 @@
 ﻿@using _8BD.Helpers;
 @inject HttpHelper _helper;
 @inject RegexHelper _regex;
-
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 @{
     ViewData["Title"] = @ViewBag.Subject;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,14 +21,16 @@
 
 
         var c = @_helper.GetUsername(item.authorId);
-        <p class="entry">@Html.Raw(_regex.PregReplace(@item.entry,_regex.patterns,_regex.replacements))</p>
+        <p class="entry">@Html.Raw(_regex.PregReplace(@item.entry, _regex.patterns, _regex.replacements))</p>
         <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-            <p class="entry-date monospace">@item.createDate.ToString("MM.dd.yyyy H:mm")</p> | <p class="monospace entry-author">@if (c != null)
-            {@c}</p>
-        </div>
+            <p class="entry-date monospace">@item.createDate.ToString("MM.dd.yyyy H:mm")</p> | <p class="monospace entry-author">
+                @if (c != null)
+                {@c}
+        </p>
+    </div>
 
-        <hr class="entry-hr">
-    }
+    <hr class="entry-hr">
+}
     if (ViewBag.Name != null)
     {
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
