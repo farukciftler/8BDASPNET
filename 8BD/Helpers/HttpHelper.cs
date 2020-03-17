@@ -67,13 +67,13 @@ namespace _8BD.Helpers
             IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/subjects/title/"+search);
             var restResponse = restClient.Get(restRequest);
              var deserializedobject = JsonConvert.DeserializeObject<Subject>(restResponse.Content);
-
             return deserializedobject;
         }
         public T PostMethod<T>(object obj, string uri, string bearerToken = null, Dictionary<string, string> headers = null)
         {
             var client = new RestClient(configuration["ApiAddress"] + uri);
             var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Json };
+            
             if (bearerToken != null)
             {
                 request.AddHeader("Authorization", string.Format("Bearer {0}", bearerToken));
