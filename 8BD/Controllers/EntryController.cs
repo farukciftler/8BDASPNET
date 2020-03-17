@@ -8,12 +8,14 @@ using Microsoft.Extensions.Configuration;
 using _8BD.Models;
 using Microsoft.AspNetCore.Http;
 
+
 namespace _8BD.Controllers
 {
     public class EntryController : Controller
     {
         IConfiguration configuration;
         private readonly HttpHelper _helper;
+       
         public EntryController(IConfiguration configuration, HttpHelper helper)
         {
 
