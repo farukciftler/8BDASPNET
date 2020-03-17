@@ -18,10 +18,8 @@ namespace _8BD.Controllers
        
         public EntryController(IConfiguration configuration, HttpHelper helper)
         {
-
             this.configuration = configuration;
             _helper = helper;
-
         }
         [HttpPost]
         public IActionResult Index(string entry, string subject)

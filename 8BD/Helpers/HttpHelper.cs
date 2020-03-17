@@ -70,7 +70,7 @@ namespace _8BD.Helpers
             return deserializedobject;
         }
         public T PostMethod<T>(object obj, string uri, string bearerToken = null, Dictionary<string, string> headers = null)
-        {
+         {
             var client = new RestClient(configuration["ApiAddress"] + uri);
             var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Json };
             
