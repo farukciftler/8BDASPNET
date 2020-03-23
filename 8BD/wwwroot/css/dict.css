@@ -1,12 +1,12 @@
 ﻿.header-subject {
     font-size: 18px;
-    font-family: monospace;
+    font-family: Calibri;
     text-transform: lowercase;
 }
 
 .entry {
     font-size: 14px;
-    font-family: monospace;
+    font-family: Calibri;
     text-transform: lowercase;
 }
 
@@ -24,23 +24,23 @@
 }
 .subject-header{
     font-size: 18px;
-    font-family: monospace;
+    font-family: Calibri;
     text-transform: lowercase;
     margin-bottom: -10px;
 }
 .sidebar-header {
     text-align: center;
     font-size: 18px;
-    font-family: monospace;
+    font-family: Calibri;
 }
 
 
 .sidebar-entryheaders {
     text-align: left;
     font-size: 13px;
-    font-family: monospace;
+    font-family: Calibri;
     margin-top: -15px;
-    font-family: monospace;
+    font-family: Calibri;
 }
 .profilistatistik:hover {
     background-color: #f9f9f9;
@@ -49,7 +49,7 @@
 .profilistatistik {
     font-size: 12px;
     font-weight: bold;
-    font-family: monospace;
+    font-family: Calibri;
 }
 
 .profilistatistikheader {
@@ -70,13 +70,13 @@
     border-left: 10px solid #ccc;
 }
 .nav-item{
-    font-family: monospace;
+    font-family: Calibri;
 }
 a{
  color: #1e211f;   
 }
-.monospace{
-    font-family: monospace;
+.Calibri{
+    font-family: Calibri;
 }
 .subject-buttons{
     margin-top:-15px;

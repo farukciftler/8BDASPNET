@@ -23,7 +23,7 @@
         var c = @_helper.GetUsername(item.authorId);
         <p class="entry">@Html.Raw(_regex.PregReplace(@item.entry, _regex.patterns, _regex.replacements))</p>
         <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-            <p class="entry-date monospace">@item.createDate.ToString("MM.dd.yyyy H:mm")</p> | <p class="monospace entry-author">
+            <p class="entry-date Calibri">@item.createDate.ToString("MM.dd.yyyy H:mm")</p> | <p class="Calibri entry-author">
                 @if (c != null)
                 {@c}
             </p>
@@ -54,7 +54,7 @@ else
     {
         <h4 class="subject-header">@ViewBag.Subject</h4>
         <br>
-        <h4 class="monospace">Böyle bir başlık bulunmamaktadır.</h4>
-        <h4 class="monospace">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
+        <h4 class="Calibri">Böyle bir başlık bulunmamaktadır.</h4>
+        <h4 class="Calibri">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
     }
 }
