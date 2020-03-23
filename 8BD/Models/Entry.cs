@@ -15,4 +15,5 @@ namespace _8BD.Models
         public DateTime createDate { get; set; }
         public DateTime lastUpdateDate { get; set; }
     }
+
 }

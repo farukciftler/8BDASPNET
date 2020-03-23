@@ -7,16 +7,16 @@
     ViewData["Title"] = @ViewBag.Subject;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>
-@if (ViewBag.Count != 0 && ViewData["Entries"] != null)
+<h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>
+@if ( ViewData["Entry"] != null)
 {
 
-   
+
     <hr>
 
 
 
-    @foreach (var item in (IEnumerable<Entry>)ViewData["Entries"])
+    @foreach (var item in (IEnumerable<Entry>)ViewData["Entry"])
     {
 
 
@@ -26,11 +26,11 @@
             <p class="entry-date monospace">@item.createDate.ToString("MM.dd.yyyy H:mm")</p> | <p class="monospace entry-author">
                 @if (c != null)
                 {@c}
-        </p>
-    </div>
+            </p>
+        </div>
 
-    <hr class="entry-hr">
-}
+        <hr class="entry-hr">
+    }
     if (ViewBag.Name != null)
     {
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
@@ -47,10 +47,10 @@ else
 {
     if (ViewBag.Name != null)
     {
-        
+
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
     }
-    else if (ViewData["Entries"] != null)
+    else if (ViewData["Entry"] != null)
     {
         <h4 class="subject-header">@ViewBag.Subject</h4>
         <br>

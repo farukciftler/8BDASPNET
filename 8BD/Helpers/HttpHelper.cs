@@ -77,7 +77,11 @@ namespace _8BD.Helpers
             if (bearerToken != null)
             {
                 request.AddHeader("Authorization", string.Format("Bearer {0}", bearerToken));
+                request.AddHeader("Accept", "application/json; charset=utf-8");
+             
+
             }
+
             var result = GetResult<T>(client, request, obj, headers);
 
             return result;
@@ -85,6 +89,7 @@ namespace _8BD.Helpers
 
         private T GetResult<T>(RestClient client, RestRequest request, object obj = null, Dictionary<string, string> headers = null)
         {
+            
             if (headers != null) //header varsa requeste headerları ekle
             {
                 foreach (var header in headers)

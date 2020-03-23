@@ -21,8 +21,25 @@ namespace _8BD.Controllers
             this.configuration = configuration;
             _helper = helper;
         }
+        [HttpGet]
+        public IActionResult Index(string search, int entryid)
+        {
+            if (search != null)
+            { 
+                var apiendpoint = "/entries/" + entryid.ToString();
+                var entry = _helper.GetApiEndpoint<Entry>(apiendpoint);
+                ViewBag.Entry = entry;
+                ViewBag.Subject = search;
+            }
+
+            ViewBag.Name = HttpContext.Session.GetString("_username");
+            ViewBag.Pass = HttpContext.Session.GetString("_password");
+
+
+            return View("~/Views/Subject/SingleEntry.cshtml");
+        }
         [HttpPost]
-        public IActionResult Index(string entry, string subject)
+        public IActionResult AddEntry(string entry, string subject)
         {
             Entry ent = new Entry();
             ent.entry = entry;

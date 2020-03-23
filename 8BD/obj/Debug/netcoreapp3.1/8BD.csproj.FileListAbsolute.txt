@@ -347,3 +347,4 @@ D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.dll
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.pdb
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.csprojAssemblyReference.cache
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.MvcApplicationPartsAssemblyInfo.cache
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\SingleEntry.cshtml.g.cs
