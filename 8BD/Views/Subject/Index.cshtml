@@ -6,13 +6,30 @@
 @{
     ViewData["Title"] = @ViewBag.Subject;
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-    <h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>
+}<div style='float:right; margin-bottom:auto; margin-right:5px;' class='dropdown'>
+
+    <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-left'></i></button>
+    <button id='sidebar_button ' style='margin-left:1px; margin-right:1px; margin-bottom:0px; min-width:60px; height:31px;' role='button' type='button' class='btn btn-sm btn-default dropdown-toggle sidebarsayfalar btn-outline-secondary' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>1  </button>
+    <div id='dropdown-side' class='dropdown-menu ' aria-labelledby='dropdownMenuButton' style='min-width:10px;'>
+        <z id='' class='dropdown-item pagination_link ' href='#'>1</z>
+    </div><button id='sag' class='btn btn-sm artir btn-outline-secondary'><i class='fa fa-angle-right'></i></button>
+</div>
+<br />
+
+<h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>
 @if (ViewBag.Count != 0 && ViewData["Entries"] != null)
 {
 
-   
+
     <hr>
+    <div class="row" style="margin-left:4px; margin-top:-18px;">
+        <a class="modbut" href="#"><i class="far fa-edit "></i></a>
+        <a class="modbut" href="#"><i class="far fa-trash-alt "></i></a>
+        <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
+        <a class="modbut" href="#"><i class="far fa-envelope "></i></a>
+        <a class="modbut" href="#"><i class="fas fa-exchange-alt "></i></a>
+        <a class="modbut" href="#"><i class="far fa-eye-slash "></i></a>
+    </div>
 
 
 
@@ -28,11 +45,21 @@
             <a href="/entry/@item.subject/@item.id"><p class="entry-date Calibri">@item.createDate.ToString("MM.dd.yyyy H:mm")</p></a> | <p class="Calibri entry-author">
                 @if (c != null)
                 {@c}
-        </p>
-    </div>
+            </p>
+        </div>
+        <div class="row" style="margin-left:4px; margin-bottom:-8px;">
+            <a class="modbut" href="#"><i class="far fa-edit "></i></a>
+            <a class="modbut" href="#"><i class="far fa-trash-alt "></i></a>
+            <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
+            <a class="modbut" href="#"><i class="far fa-envelope "></i></a>
+            <a class="modbut" href="#"><i class="fas fa-exchange-alt "></i></a>
+            <a class="modbut" href="#"><i class="far fa-eye-slash "></i></a>
+        </div>
 
-    <hr class="entry-hr">
-}
+
+        <br />
+        <hr class="entry-hr">
+    }
     if (ViewBag.Name != null)
     {
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
@@ -49,7 +76,7 @@ else
 {
     if (ViewBag.Name != null)
     {
-        
+
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
     }
     else if (ViewData["Entries"] != null)

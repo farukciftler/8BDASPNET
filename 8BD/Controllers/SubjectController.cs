@@ -23,8 +23,9 @@ namespace _8BD.Controllers
             this.configuration = configuration;
             _helper = helper;
         }
+        //[HttpGet("[controller]/{search}/{pageIndex}")]
         [HttpGet]
-        public IActionResult Index(string search)
+        public IActionResult Index(string search, int pageIndex = 0)
         
         {
 
@@ -35,6 +36,7 @@ namespace _8BD.Controllers
                 var entries = _helper.GetApiEndpoint<List<Entry>>(apiendpoint);
                 ViewBag.Subject = search;
                 ViewBag.Entries = entries;
+                ViewBag.Index = pageIndex;
                 ViewBag.Count = entries.Count();
             }
             

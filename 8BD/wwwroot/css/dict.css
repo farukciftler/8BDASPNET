@@ -57,7 +57,7 @@
 }
 .profilquote {
     min-height:30px;
-    weight: 700px;
+  
     background: #f9f9f9;
     border-left: 10px solid #ccc;
     margin-top: 20px;
@@ -82,5 +82,11 @@ a{
     margin-top:-15px;
     margin-bottom:20px;
 
+}
+.modbut{
+    margin-left:2px;
+}
+.modbut:hover{
+    color:darkred;
 }
 
