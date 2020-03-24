@@ -15,19 +15,21 @@ namespace _8BD.Controllers
     {
         IConfiguration configuration;
         private readonly HttpHelper _helper;
-       
+
         public EntryController(IConfiguration configuration, HttpHelper helper)
         {
             this.configuration = configuration;
             _helper = helper;
         }
-        [HttpGet]
+        [HttpGet("[controller]/{search}/{entryid}")]
         public IActionResult Index(string search, int entryid)
         {
             if (search != null)
             { 
                 var apiendpoint = "/entries/" + entryid.ToString();
+                
                 var entry = _helper.GetApiEndpoint<Entry>(apiendpoint);
+               
                 ViewBag.Entry = entry;
                 ViewBag.Subject = search;
             }

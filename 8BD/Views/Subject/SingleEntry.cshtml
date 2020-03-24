@@ -1,36 +1,38 @@
 ﻿@using _8BD.Helpers;
 @inject HttpHelper _helper;
 @inject RegexHelper _regex;
+@using _8BD.Models;
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 @{
     ViewData["Title"] = @ViewBag.Subject;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var entry = ViewData["Entry"] as Entry;
 }
-<h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>
-@if ( ViewData["Entry"] != null)
+
+<h4 class="subject-header"><b>@entry.subject  </b></h4>
+@if (ViewData["Entry"] != null)
 {
 
-
     <hr>
+    <br />
+    <a href="#"><li class="list-group-item" style="text-align:center">daha önceki tanımlar</li></a>
+    <br />
+    <hr />
+    var c = @_helper.GetUsername(entry.authorId);
+    <a style="float:right; font-size:12px;" class="Calibri" href="/entry/@entry.subject/@entry.id">#@entry.id </a>
+    <br />
+    <p class="entry">@Html.Raw(_regex.PregReplace(entry.entry, _regex.patterns, _regex.replacements))</p>
+    <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
+        <a href="/entry/@entry.subject/@entry.id"><p class="entry-date Calibri">@entry.createDate.ToString("MM.dd.yyyy H:mm")</p></a> | <p class="Calibri entry-author">
+            @if (c != null)
+            {@c}
+        </p>
+    </div>
 
+    <hr class="entry-hr">
+    <a href="#"><li class="list-group-item" style="text-align:center">daha sonraki tanımlar</li></a>
 
-
-    @foreach (var item in (IEnumerable<Entry>)ViewData["Entry"])
-    {
-
-
-        var c = @_helper.GetUsername(item.authorId);
-        <p class="entry">@Html.Raw(_regex.PregReplace(@item.entry, _regex.patterns, _regex.replacements))</p>
-        <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-            <p class="entry-date Calibri">@item.createDate.ToString("MM.dd.yyyy H:mm")</p> | <p class="Calibri entry-author">
-                @if (c != null)
-                {@c}
-            </p>
-        </div>
-
-        <hr class="entry-hr">
-    }
     if (ViewBag.Name != null)
     {
         @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
@@ -54,7 +56,14 @@ else
     {
         <h4 class="subject-header">@ViewBag.Subject</h4>
         <br>
-        <h4 class="Calibri">Böyle bir başlık bulunmamaktadır.</h4>
-        <h4 class="Calibri">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
+        <h4 class="Calibri">Böyle bir tanom bulunmamaktadır.</h4>
+        <h4 class="Calibri">Tanım yazmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
     }
+
+
+
+
+
+
+
 }

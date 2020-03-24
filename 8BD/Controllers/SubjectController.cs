@@ -32,7 +32,7 @@ namespace _8BD.Controllers
             {
                 var sub = _helper.GetApiEndpointSearch(search);
                 var apiendpoint = "/entries/subjectid/" + sub.id.ToString();
-                var entries = _helper.GetApiEndpoint<Entry>(apiendpoint);
+                var entries = _helper.GetApiEndpoint<List<Entry>>(apiendpoint);
                 ViewBag.Subject = search;
                 ViewBag.Entries = entries;
                 ViewBag.Count = entries.Count();

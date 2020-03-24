@@ -31,14 +31,14 @@ namespace _8BD.Helpers
            
             return token;
         }
-        public List<T> GetApiEndpoint<T>(string apiendpoint)
+        public T GetApiEndpoint<T>(string apiendpoint)
         {
 
             
             IRestClient restClient = new RestClient();
             IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + apiendpoint);
             var restResponse = restClient.Get(restRequest);
-            var deserializedobject = JsonConvert.DeserializeObject<List<T>>(restResponse.Content);
+            var deserializedobject = JsonConvert.DeserializeObject<T>(restResponse.Content);
 
             return deserializedobject;
         }
@@ -77,7 +77,7 @@ namespace _8BD.Helpers
             if (bearerToken != null)
             {
                 request.AddHeader("Authorization", string.Format("Bearer {0}", bearerToken));
-                request.AddHeader("Accept", "application/json; charset=utf-8");
+                request.AddHeader("Accept", "application/json; charset=utf-8"); //İŞE YARAMIYOR
              
 
             }
@@ -95,15 +95,18 @@ namespace _8BD.Helpers
                 foreach (var header in headers)
                 {
                     request.AddHeader(header.Key, header.Value);
+                    request.AddHeader("Accept", "application/json; charset=utf-8");
                 }
             }
 
             if (obj != null) //post,put,delete gibi işlemler için servise gönderilecek nesne varsa requeste ekle
             {
                 request.AddJsonBody(obj);
+
             }
             //client üzerinden requesti servise yolla ve
             var response = client.Execute(request);
+           
 
             return JsonConvert.DeserializeObject<T>(response.Content, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
