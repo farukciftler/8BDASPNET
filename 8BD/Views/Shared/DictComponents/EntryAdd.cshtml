@@ -15,7 +15,7 @@
 
 
 
-    <button id="girdi-area2" type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">b</button>
+    <button id="girdi-area2" type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left" onclick="foo()">b</button>
     <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px; float: left">i</button>
     <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">bkz</button>
     <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">gbkz</button>
@@ -25,3 +25,16 @@
     <button type="submit" class="btn btn-dark" style="margin-top: 10px;  float: right;">Gönder</button>
 
 </form>
+
+<script>
+
+    function foo()
+    {
+    let sel = window.getSelection(); 
+
+    sel.modify('extend', 'forward', select.value);
+    alert(sel);
+    var selRange = sel.getRangeAt(0);
+    // do stuff with the range
+    }
+</script>
