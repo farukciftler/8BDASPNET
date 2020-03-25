@@ -55,10 +55,41 @@ namespace _8BD.Helpers
                 deserializedobject = JsonConvert.DeserializeObject<string>(restResponse.Content);
                 
             }
-            
-   
-            return deserializedobject;
+
+
+                return deserializedobject;
         }
+
+
+        public int GetSubjectIdByName(string search)
+        {
+
+
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/subjects/title/" + search);
+            var restResponse = restClient.Get(restRequest);
+
+            var deserializedobject = JsonConvert.DeserializeObject<Subject>(restResponse.Content);
+           
+             
+
+            return deserializedobject.id;
+        }
+        public string GetSubjectNameById(int search)
+        {
+
+
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/subjects/id/" + search);
+            var restResponse = restClient.Get(restRequest);
+
+            var deserializedobject = JsonConvert.DeserializeObject<Subject>(restResponse.Content);
+
+
+
+            return deserializedobject.subject;
+        }
+
         public Subject GetApiEndpointSearch(string search)
         {
 

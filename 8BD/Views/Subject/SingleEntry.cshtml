@@ -10,16 +10,16 @@
     var entry = ViewData["Entry"] as Entry;
 }
 
-<h4 class="subject-header"><b>@entry.subject  </b></h4>
+<h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>
 @if (ViewData["Entry"] != null)
 {
 
     <hr>
     <div class="row" style="margin-left:4px; margin-top:-18px;">
+        <a class="modbut" href="#"><i class="fas fa-link"></i></a>
         <a class="modbut" href="#"><i class="far fa-edit "></i></a>
         <a class="modbut" href="#"><i class="far fa-trash-alt "></i></a>
         <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
-        <a class="modbut" href="#"><i class="far fa-envelope "></i></a>
         <a class="modbut" href="#"><i class="fas fa-exchange-alt "></i></a>
         <a class="modbut" href="#"><i class="far fa-eye-slash "></i></a>
     </div>
@@ -28,11 +28,11 @@
     <br />
     <hr />
     var c = @_helper.GetUsername(entry.authorId);
-    <a style="float:right; font-size:12px;" class="Calibri" href="/entry/@entry.subject/@entry.id">#@entry.id </a>
+    <a style="float:right; font-size:12px;" class="Calibri" href="/entry/@ViewBag.Subject/@entry.id">#@entry.id </a>
     <br />
     <p class="entry">@Html.Raw(_regex.PregReplace(entry.entry, _regex.patterns, _regex.replacements))</p>
     <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-        <a href="/entry/@entry.subject/@entry.id"><p class="entry-date Calibri">@entry.createDate.ToString("MM.dd.yyyy H:mm")</p></a> | <p class="Calibri entry-author">
+        <a href="/entry/@ViewBag.Subject/@entry.id"><p class="entry-date Calibri">@entry.createDate.ToString("MM.dd.yyyy H:mm")</p></a> | <p class="Calibri entry-author">
             @if (c != null)
             {@c}
         </p>
@@ -71,7 +71,7 @@ else
     }
     else if (ViewData["Entry"] != null)
     {
-        <h4 class="subject-header">@ViewBag.Subject</h4>
+        
         <br>
         <h4 class="Calibri">Böyle bir tanom bulunmamaktadır.</h4>
         <h4 class="Calibri">Tanım yazmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>

@@ -41,12 +41,38 @@ namespace _8BD.Controllers
             return View("~/Views/Subject/SingleEntry.cshtml");
         }
         [HttpPost]
-        public IActionResult AddEntry(string entry, string subject)
+        public IActionResult AddEntry(string entry, int subjectId=0, string subject=null)
         {
             Entry ent = new Entry();
             ent.entry = entry;
-            ent.subject = subject;
+            var d = 0;
             var token = HttpContext.Session.GetString("_token");
+            if (subjectId == 0)
+            {
+                d = _helper.GetSubjectIdByName(subject);
+                if (d == 0)
+                {
+                    Subject newsubject = new Subject();
+                    newsubject.subject = subject;
+                    var c= _helper.PostMethod<Subject>(newsubject, "/subjects", token);
+
+                    ent.subjectId = c.id;
+                }
+                else
+                {
+                    ent.subjectId = d;
+                }
+                
+
+            }
+            else
+            {
+                ent.subjectId = subjectId;
+            }
+            
+            
+            
+            
             _helper.PostMethod<Entry>(ent, "/Entries", token);
             var subjecturl = configuration["AppHost"] +"/subject?search="+subject;
             return Redirect(subjecturl);
