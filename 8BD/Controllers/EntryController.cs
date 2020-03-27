@@ -74,7 +74,7 @@ namespace _8BD.Controllers
             
             
             _helper.PostMethod<Entry>(ent, "/Entries", token);
-            var subjecturl = configuration["AppHost"] +"/subject?search="+subject;
+            var subjecturl = configuration["AppHost"] + "/subject?search=" + subject;
             return Redirect(subjecturl);
         }
     }

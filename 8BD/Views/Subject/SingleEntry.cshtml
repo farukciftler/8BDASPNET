@@ -16,7 +16,7 @@
 
     <hr>
     <div class="row" style="margin-left:4px; margin-top:-18px;">
-        <a class="modbut" href="#"><i class="fas fa-link"></i></a>
+        <a class="modbut" onclick="CopyLink();" title="Linki kopyala" href="#"><i class="fas fa-link"></i></a>
         <a class="modbut" href="#"><i class="far fa-edit "></i></a>
         <a class="modbut" href="#"><i class="far fa-trash-alt "></i></a>
         <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
@@ -71,7 +71,7 @@ else
     }
     else if (ViewData["Entry"] != null)
     {
-        
+
         <br>
         <h4 class="monospace">Böyle bir tanom bulunmamaktadır.</h4>
         <h4 class="monospace">Tanım yazmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
@@ -84,3 +84,17 @@ else
 
 
 }
+<script>
+    function CopyLink() {
+        var dummy = document.createElement('input'),
+            text = window.location.href;
+
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        alert("Link Kopyalandı!");
+
+    }
+</script>

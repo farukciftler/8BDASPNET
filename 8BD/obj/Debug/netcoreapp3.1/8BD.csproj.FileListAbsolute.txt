@@ -348,3 +348,7 @@ D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.pdb
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.csprojAssemblyReference.cache
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.MvcApplicationPartsAssemblyInfo.cache
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\SingleEntry.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\EntryEdit.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\EntryTransfer.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\SubjectEdit.cshtml.g.cs
