@@ -32,12 +32,14 @@ namespace _8BD.Controllers
             if(search != null)
             {
                 var sub = _helper.GetApiEndpointSearch(search);
-                var apiendpoint = "/entries/subjectid/" + sub.id.ToString();
+                var apiendpoint = "/entries?subjectId=" + sub.id.ToString() + "&pageIndex=" +pageIndex;
                 var entries = _helper.GetApiEndpoint<List<Entry>>(apiendpoint);
                 ViewBag.Subject = search;
+                ViewBag.SubjectId = sub.id;
                 ViewBag.Entries = entries;
                 ViewBag.Index = pageIndex;
                 ViewBag.Count = entries.Count();
+                ViewBag.pageIndex = pageIndex;
             }
             
             ViewBag.Name = HttpContext.Session.GetString("_username");

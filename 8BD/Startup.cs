@@ -32,6 +32,7 @@ namespace _8BD
             services.AddScoped<SidebarHelper>();
             services.AddScoped<HttpHelper>();
             services.AddScoped<RegexHelper>();
+            services.AddScoped<PaginationHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

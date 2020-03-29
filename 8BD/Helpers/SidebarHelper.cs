@@ -29,5 +29,14 @@ namespace _8BD.Helpers
             return deneme;
         }
 
+        public int getSubjectsQuantity(int subjectId)
+        {
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/entries/entrynumber/" + subjectId);
+            var restResponse = restClient.Get(restRequest);
+            var subjects = JsonConvert.DeserializeObject<int>(restResponse.Content);
+            return subjects;
+        }
+
     }
 }

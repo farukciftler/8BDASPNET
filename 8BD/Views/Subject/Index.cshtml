@@ -1,6 +1,7 @@
 ﻿@using _8BD.Helpers;
 @inject HttpHelper _helper;
 @inject RegexHelper _regex;
+@inject PaginationHelper _pagination;
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 @{
@@ -8,11 +9,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }<div style='float:right; margin-bottom:auto; margin-right:5px;' class='dropdown'>
 
-    <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-left'></i></button>
-    <button id='sidebar_button ' style='margin-left:1px; margin-right:1px; margin-bottom:0px; min-width:60px; height:31px;' role='button' type='button' class='btn btn-sm btn-default dropdown-toggle sidebarsayfalar btn-outline-secondary' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>1  </button>
+    @{
+        var a = ViewBag.pageIndex + 1;
+        var b = ViewBag.pageIndex - 1;
+    }
+
+    @if (@b < 0)
+    {
+        <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-left'></i></button>
+    }
+    else
+    {
+        <a href="/subject?search=@ViewBag.Subject&pageIndex=@b"> <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-left'></i></button></a>
+    }
+
+    <button id='sidebar_button ' style='margin-left:1px; margin-right:1px; margin-bottom:0px; min-width:60px; height:31px;' role='button' type='button' class='btn btn-sm btn-default dropdown-toggle sidebarsayfalar btn-outline-secondary' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>@a  </button>
     <div id='dropdown-side' class='dropdown-menu ' aria-labelledby='dropdownMenuButton' style='min-width:10px;'>
-        <z id='' class='dropdown-item pagination_link ' href='#'>1</z>
-    </div><button id='sag' class='btn btn-sm artir btn-outline-secondary'><i class='fa fa-angle-right'></i></button>
+
+        @for (int i = 0; i < @_pagination.getPageNumber(ViewBag.SubjectId); i++)
+        {
+            var c = i +1;
+            <a id='' class='dropdown-item pagination_link ' href='/subject?search=@ViewBag.Subject&pageIndex=@i'>@c</a>
+
+        }
+
+
+    </div>
+    @if (@a == @_pagination.getPageNumber(ViewBag.SubjectId))
+    {
+        <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-right'></i></button>
+    }
+    else
+    {
+        <a href="/subject?search=@ViewBag.Subject&pageIndex=@a"><button id='sag' class='btn btn-sm artir btn-outline-secondary'><i class='fa fa-angle-right'></i></button></a>
+    }
+
 </div>
 <br />
 
@@ -24,7 +55,7 @@
     <hr>
     <div class="row" style="margin-left:4px; margin-top:-18px;">
         <a class="modbut" onclick="CopyLink();" title="Linki kopyala" href="#"><i class="fas fa-link"></i></a>
-        <a class="modbut" href="subjectedit"><i class="far fa-edit "></i></a>
+        <a class="modbut" href="/subjectedit"><i class="far fa-edit "></i></a>
         <a class="modbut" href="#"><i class="far fa-trash-alt "></i></a>
         <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
         <a class="modbut" href="#"><i class="fas fa-exchange-alt "></i></a>
@@ -48,11 +79,11 @@
             </p>
         </div>
         <div class="row" style="margin-left:4px; margin-bottom:-8px;">
-            <a class="modbut" href="entryedit"><i class="far fa-edit "></i></a>
+            <a class="modbut" href="/entryedit"><i class="far fa-edit "></i></a>
             <a class="modbut" href=""><i class="far fa-trash-alt "></i></a>
             <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
             <a class="modbut" href="#"><i class="far fa-envelope "></i></a>
-            <a class="modbut" href="entrytransfer"><i class="fas fa-exchange-alt "></i></a>
+            <a class="modbut" href="/entrytransfer"><i class="fas fa-exchange-alt "></i></a>
             <a class="modbut" href="#"><i class="far fa-eye-slash "></i></a>
         </div>
 
@@ -81,7 +112,7 @@ else
     }
     else if (ViewData["Entries"] != null)
     {
-        
+
         <br>
         <h4 class="monospace">Böyle bir başlık bulunmamaktadır.</h4>
         <h4 class="monospace">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
