@@ -19,19 +19,31 @@ namespace _8BD.Controllers
         public IActionResult EntryEdit()
         {
 
-            return View("~/Views/Subject/EntryEdit.cshtml");
+            return View("~/Views/Subject/Button/EntryEdit.cshtml");
         }
         [HttpGet("entrytransfer")]
         public IActionResult EntryTransfer()
         {
 
-            return View("~/Views/Subject/EntryTransfer.cshtml");
+            return View("~/Views/Subject/Button/EntryTransfer.cshtml");
         }
         [HttpGet("subjectedit")]
         public IActionResult SubjectEdit()
         {
 
-            return View("~/Views/Subject/SubjectEdit.cshtml");
+            return View("~/Views/Subject/Button/SubjectEdit.cshtml");
+        }
+        [HttpGet("subjectdelete")]
+        public IActionResult SubjectDelete()
+        {
+
+            return View("~/Views/Subject/Button/SubjectDelete.cshtml");
+        }
+        [HttpGet("entrydelete")]
+        public IActionResult EntryDelete()
+        {
+
+            return View("~/Views/Subject/Button/EntryDelete.cshtml");
         }
     }
 }

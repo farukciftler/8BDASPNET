@@ -7,38 +7,38 @@
     <form class="form-horizontal" asp-controller="Login" asp-action="AddUser" method="POST">
         <fieldset>
             <div id="legend">
-                <legend class="">Register</legend>
+                <legend class="monospace">kayıt sayfası</legend>
             </div>
             <div class="control-group">
                 <!-- Username -->
-                <label class="control-label" for="username">Username</label>
+                <label class="control-label monospace" for="username">kullanıcı adı</label>
                 <div class="controls">
-                    <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
-                    <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                    <input type="text" id="username" name="username" placeholder="" class="input-xlarge monospace">
+                    <p class="help-block monospace">username can contain any letters or numbers, without spaces</p>
                 </div>
             </div>
 
             <div class="control-group">
                 <!-- E-mail -->
-                <label class="control-label" for="email">E-mail</label>
+                <label class="control-label monospace" for="email">email</label>
                 <div class="controls">
-                    <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-                    <p class="help-block">Please provide your E-mail</p>
+                    <input type="text" id="email" name="email" placeholder="" class="input-xlarge monospace">
+                    <p class="help-block monospace">please provide your E-mail</p>
                 </div>
             </div>
             <div class="control-group">
                 <!-- Password-->
-                <label class="control-label" for="password">Password</label>
+                <label class="control-label monospace" for="password">şifre</label>
                 <div class="controls">
                     <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                    <p class="help-block">Password should be at least 4 characters</p>
+                    <p class="help-block monospace">password should be at least 4 characters</p>
                 </div>
             </div>
              
             <div class="control-group">
                 <!-- Button -->
                 <div class="controls">
-                    <button class="btn btn-success">Register</button>
+                    <button class="btn btn-success monospace"> kayıt Ol</button>
                 </div>
             </div>
         </fieldset>

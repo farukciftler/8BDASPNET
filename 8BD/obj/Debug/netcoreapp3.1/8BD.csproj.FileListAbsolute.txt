@@ -325,7 +325,6 @@ D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.TagHelpers.input.cach
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.TagHelpers.output.cache
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.RazorCoreGenerate.cache
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Login\Register.cshtml.g.cs
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Index.cshtml.g.cs
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Footer.cshtml.g.cs
@@ -348,7 +347,9 @@ D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.pdb
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.csprojAssemblyReference.cache
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.MvcApplicationPartsAssemblyInfo.cache
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\SingleEntry.cshtml.g.cs
-D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
-D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\EntryEdit.cshtml.g.cs
-D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\EntryTransfer.cshtml.g.cs
-D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\SubjectEdit.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\EntryEdit.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\EntryTransfer.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\SubjectEdit.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\SubjectDelete.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\EntryDelete.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Announcement\Index.cshtml.g.cs
