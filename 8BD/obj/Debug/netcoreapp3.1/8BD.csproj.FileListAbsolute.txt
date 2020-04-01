@@ -353,3 +353,4 @@ D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Butto
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\SubjectDelete.cshtml.g.cs
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\EntryDelete.cshtml.g.cs
 D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Announcement\Index.cshtml.g.cs
+D:\Workspace\8BD\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Subject\Button\SubjectHide.cshtml.g.cs

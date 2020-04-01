@@ -75,6 +75,20 @@ namespace _8BD.Helpers
 
             return deserializedobject.id;
         }
+        public Entry GetEntryById(int search)
+        {
+
+
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/entries/" + search);
+            var restResponse = restClient.Get(restRequest);
+
+            var deserializedobject = JsonConvert.DeserializeObject<Entry>(restResponse.Content);
+
+
+
+            return deserializedobject;
+        }
         public string GetSubjectNameById(int search)
         {
 

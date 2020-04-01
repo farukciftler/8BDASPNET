@@ -1,29 +1,33 @@
-﻿
+﻿@using _8BD.Helpers;
+@inject HttpHelper _helper;
 @{
     ViewData["Title"] = "SubjectDelete";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<br />
-<br />
+    var id = ViewBag.id;
+    var subject = _helper.GetSubjectNameById(id);
 
-<div class="quote">
-    <h4 class="subject-header">Aşağıdaki başlığı silmek istediğinize emin misiniz?</h4>
-</div>
-<br />
+ }
+    <br />
+    <br />
 
-
-<form action="/" method="post">
-    <div class="row"  style="margin-left:4px;">
-        <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Evet</button>
-        &emsp;
-        <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button>
-
+    <div class="quote">
+        <h4 class="subject-header">Aşağıdaki başlığı silmek istediğinize emin misiniz?</h4>
     </div>
+    <br />
 
-    <div class="md-form">
-        <label for="form1" class="monospace"> Başlık:</label>
-        <input type="text" id="form1" class="form-control monospace" disabled>
 
-    </div>
+    <form action="/" method="post">
+        <div class="row" style="margin-left:4px;">
+            <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Evet</button>
+            &emsp;
+            <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button>
 
-</form>
+        </div>
+
+        <div class="md-form">
+            <label for="form1" class="monospace"> Başlık:</label>
+            <input type="text" id="form1" placeholder="@subject" class="form-control monospace" disabled>
+
+        </div>
+
+    </form>

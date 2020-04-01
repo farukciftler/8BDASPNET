@@ -1,19 +1,23 @@
-﻿
+﻿@using _8BD.Helpers;
+@inject HttpHelper _helper;
 @{
     ViewData["Title"] = "EntryTransfer";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = ViewBag.id;
+    var entry = _helper.GetEntryById(id);
+
 }
 <h2 class="monospace"> Tanım Taşıma</h2>
 <form action="/" method="post">
 
     <div class="md-form">
         <label for="form1" class="monospace">Eski Başlık:</label>
-        <input type="text" id="form1" class="form-control monospace" disabled>
+        <input type="text" id="form1" class="form-control monospace" placeholder="@_helper.GetSubjectNameById(@entry.subjectId)" disabled>
 
     </div>
     <div class="md-form">
         <label for="form1" class="monospace">Yeni Başlık:</label>
-        <input type="text" id="form1" class="form-control monospace" >
+        <input type="text" id="form1" class="form-control monospace">
 
     </div>
 

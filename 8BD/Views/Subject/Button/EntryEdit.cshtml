@@ -1,18 +1,22 @@
-﻿
+﻿@using _8BD.Helpers;
+@inject HttpHelper _helper;
 @{
     ViewData["Title"] = "EntryEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = ViewBag.id;
+    var entry = _helper.GetEntryById(id);
+
 }
 <h2 class="monospace"> Tanım Düzenle</h2>
 <form action="/" method="post">
 
     <div class="md-form">
         <label for="form1" class="monospace">Başlık:</label>
-        <input type="text" id="form1" class="form-control monospace" disabled>
+        <input type="text" id="form1" class="form-control monospace" placeholder="@_helper.GetSubjectNameById(@entry.subjectId)" disabled>
 
     </div>
 
     <label for="form_message" class="monospace">Tanım:</label>
-<textarea id="form_message" name="message" class="form-control monospace"  rows="4" required data-error="Please,leave us a message."></textarea>
+    <textarea type="text" name="entry" id="girdi-area" value="" placeholder="@entry.entry" class="md-textarea form-control" rows="3" ></textarea>
     <button type="submit" class="btn btn-dark monospace" style="margin-top: 10px;  float: right;">Gönder</button>
 </form>
