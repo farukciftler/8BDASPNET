@@ -50,6 +50,11 @@ namespace _8BD.Controllers
 
             return View();
         }
+        public IActionResult ForgotPassword()
+        {
+
+            return View();
+        }
         [HttpPost]
         public IActionResult AddUser(string username, string password, string email)
         {
