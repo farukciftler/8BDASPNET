@@ -74,6 +74,10 @@ namespace _8BD.Controllers
             
             
             _helper.PostMethod<Entry>(ent, "/Entries", token);
+            subject =String.Join(
+            "/",
+            subject.Split("/").Select(s => System.Net.WebUtility.UrlEncode(s))
+            );
             var subjecturl = configuration["AppHost"] + "/subject?search=" + subject;
             return Redirect(subjecturl);
         }
