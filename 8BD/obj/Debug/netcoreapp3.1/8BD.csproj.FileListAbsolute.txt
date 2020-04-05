@@ -482,3 +482,5 @@ C:\Users\abdul\Documents\Projects\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\staticwe
 C:\Users\abdul\Documents\Projects\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.dll
 C:\Users\abdul\Documents\Projects\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.pdb
 C:\Users\abdul\Documents\Projects\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\8BD.genruntimeconfig.cache
+C:\Users\abdul\Documents\Projects\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Sidebar2.cshtml.g.cs
+C:\Users\abdul\Documents\Projects\8BDASPNET\8BD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout2.cshtml.g.cs

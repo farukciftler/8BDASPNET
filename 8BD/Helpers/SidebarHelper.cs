@@ -28,6 +28,16 @@ namespace _8BD.Helpers
             var deneme = subjects.OrderByDescending(x => x.updateDate);
             return deneme;
         }
+        
+        public  IOrderedEnumerable<Subject> getSubjectsTwo(int pageNumber, int pageSize)
+        {
+             IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/subjects?pageIndex={pageNumber-1}&pageSize={pageSize}");
+            var restResponse = restClient.Get(restRequest);
+            var subjects = JsonConvert.DeserializeObject<List<Subject>>(restResponse.Content);
+            var deneme = subjects.OrderByDescending(x => x.updateDate);
+            return deneme;
+        }
 
         public int getSubjectsQuantity(int subjectId)
         {

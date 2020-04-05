@@ -1,0 +1,91 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+@using RestSharp;
+@using _8BD.Helpers;
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@inject SidebarHelper helper;
+<br /><br />
+
+<h1 class="sidebar-header">vizyondaki başlıklar </h1>
+
+<div id="paged"></div>
+
+
+<br>
+<ul class="list-group" id="tblData">
+    
+
+
+ 
+</ul>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        //Initially load pagenumber=1
+        GetPageData(1);
+    });
+    function GetPageData(pageNum, pageSize) {
+        //After every trigger remove previous data and paging
+        $("#tblData").empty();
+        $("#paged").empty();
+        $.getJSON("/Subject/GetPaggedData", { pageNumber: pageNum, pageSize: pageSize }, function (response) {
+            var rowData = "";
+            for (var i = 0; i < response.Data.length; i++) {
+                rowData = rowData + '<a href="/Subject?search='+  response.Data[i].subject + '" class="monospace"><li class="list-group-item">'+ response.Data[i].subject + '</li></a>' ;
+                
+            }
+            $("#tblData").append(rowData);
+            PaggingTemplate(response.TotalPages, response.CurrentPage);
+        });
+    }
+    //This is paging temlpate ,you should just copy paste
+    function PaggingTemplate(totalPage, currentPage) {
+        var template = "";
+        var TotalPages = totalPage;
+        var CurrentPage = currentPage;
+        var PageNumberArray = Array();
+
+
+        var countIncr = 1;
+        for (var i = currentPage; i <= totalPage; i++) {
+            PageNumberArray[0] = currentPage;
+            if (totalPage != currentPage && PageNumberArray[countIncr - 1] != totalPage) {
+                PageNumberArray[countIncr] = i + 1;
+            }
+            countIncr++;
+        };
+        PageNumberArray = PageNumberArray.slice(0, 5);
+        var FirstPage = 1;
+        var LastPage = totalPage;
+        if (totalPage != currentPage) {
+            var ForwardOne = currentPage + 1;
+        }
+        var BackwardOne = 1;
+        if (currentPage > 1) {
+            BackwardOne = currentPage - 1;
+        }
+        template = '<div style="margin-bottom:10px; justify-content:center;" class="dropdown">';
+        template = template + '<button id="sol" style="margin-left:33%;" class="btn btn-sm eksilt btn-outline-secondary" onclick="GetPageData(' + FirstPage + ')"><i class="fa fa-angle-left"></i></button>';
+        template = template + '<button id="sidebar_button " style="margin-left:1px; margin-right:1px; margin-bottom:0px; min-width:60px; height:31px;"'+
+        'role="button" type="button" class="btn btn-sm btn-default dropdown-toggle sidebarsayfalar btn-outline-secondary" '+
+        'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">1  </button>';
+        template = template + '<div id="dropdown-side" class="dropdown-menu " aria-labelledby="dropdownMenuButton" style="min-width:10px;">';
+        var numberingLoop = "";
+        for (var i = 0; i < PageNumberArray.length; i++) {
+            numberingLoop = numberingLoop + '<a class="page-number active" onclick="GetPageData(' + PageNumberArray[i] + ')" href="#">' + PageNumberArray[i] + ' &nbsp;&nbsp;</a>'
+        }
+        template = template + numberingLoop + '</div>';
+        template = template + '<button id="sag" class="btn btn-sm artir btn-outline-secondary" onclick="GetPageData(' + BackwardOne + ')"><i  class="fa fa-angle-right"></i></button>';
+        template = template + '</div>';
+
+        $("#paged").append(template);
+        $('#selectedId').change(function () {
+            GetPageData(1, $(this).val());
+        });
+    }
+</script>
