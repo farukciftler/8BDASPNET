@@ -24,8 +24,8 @@ namespace _8BD.Helpers
         {
         @"<b>${bold}</b>",
         @"<i>${italic}</i>",
-        @"(bkz: <a href='subject?search=${bkz}'>${bkz}</a>)",
-        @"<a href='subject?search=${gbkz}'>${gbkz}</a>",
+        @"(bkz: <a href='subject?search=${bkz}'><b>${bkz}</b></a>)",
+        @"<a href='subject?search=${gbkz}'><b>${gbkz}</b></a>",
         @"</p><iframe style='width:99%; height: 400px;' src='https://www.youtube.com/embed/${youtube}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><p class='tanim'>",
         @"<img style='width:99%; height: 400px;' src='${image}'>"
         };

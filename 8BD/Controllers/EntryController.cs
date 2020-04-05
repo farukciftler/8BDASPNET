@@ -44,7 +44,9 @@ namespace _8BD.Controllers
         public IActionResult AddEntry(string entry, int subjectId=0, string subject=null)
         {
             Entry ent = new Entry();
+            entry = entry.Replace( "\r\n", "<br />" ).Replace( "\n", "<br />" );
             ent.entry = entry;
+            
             var d = 0;
             var token = HttpContext.Session.GetString("_token");
             if (subjectId == 0)
