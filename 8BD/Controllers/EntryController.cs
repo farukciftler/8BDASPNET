@@ -32,6 +32,7 @@ namespace _8BD.Controllers
                
                 ViewBag.Entry = entry;
                 ViewBag.Subject = search;
+                ViewBag.subjectId = entry.subjectId;
             }
 
             ViewBag.Name = HttpContext.Session.GetString("_username");

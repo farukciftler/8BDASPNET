@@ -17,11 +17,9 @@
     <hr>
     <div class="row" style="margin-left:4px; margin-top:-18px;">
         <a class="modbut" onclick="CopyLink();" title="Linki kopyala" href="#"><i class="fas fa-link"></i></a>
-        <a class="modbut" href="subjectedit"><i class="far fa-edit "></i></a>
-        <a class="modbut" href="#"><i class="far fa-trash-alt "></i></a>
-        <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
-        <a class="modbut" href="#"><i class="fas fa-exchange-alt "></i></a>
-        <a class="modbut" href="#"><i class="far fa-eye-slash "></i></a>
+        <a class="modbut" href="/subjectedit/@ViewBag.SubjectId"><i class="far fa-edit "></i></a>
+        <a class="modbut" href="/subjectdelete/@ViewBag.SubjectId"><i class="far fa-trash-alt "></i></a>
+        <a class="modbut" href="/subjecthide/@ViewBag.SubjectId"><i class="far fa-eye-slash "></i></a>
     </div>
     <br />
     <a href="#"><li class="list-group-item" style="text-align:center">daha önceki tanımlar</li></a>
@@ -37,14 +35,11 @@
             {@c}
         </p>
     </div>
-    <div class="row" style="margin-left:4px; margin-bottom:-8px;">
-        <a class="modbut" href="/entryedit"><i class="far fa-edit "></i></a>
-        <a class="modbut" href=""><i class="far fa-trash-alt "></i></a>
-        <a class="modbut" href="#"><i class="far fa-folder-open "></i></a>
-        <a class="modbut" href="#"><i class="far fa-envelope "></i></a>
-        <a class="modbut" href="/entrytransfer"><i class="fas fa-exchange-alt "></i></a>
-        <a class="modbut" href="#"><i class="far fa-eye-slash "></i></a>
-    </div>
+   <div class="row" style="margin-left:4px; margin-bottom:-8px;">
+            <a class="modbut" href="/entryedit/@entry.id"><i class="far fa-edit "></i></a>
+            <a class="modbut" href="/entrydelete/@entry.id"><i class="far fa-trash-alt "></i></a>
+            <a class="modbut" href="/entrytransfer/@entry.id"><i class="fas fa-exchange-alt "></i></a>
+        </div>
     <br />
 
     <hr class="entry-hr">
