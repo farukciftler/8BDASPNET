@@ -22,7 +22,7 @@ namespace _8BD.Helpers
         public IOrderedEnumerable<Subject> getSubjects()
         {
             IRestClient restClient = new RestClient();
-            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/subjects?pageIndex=0&pageSize=5");
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/subjects?pageIndex=0&pageSize=20");
             var restResponse = restClient.Get(restRequest);
             var subjects = JsonConvert.DeserializeObject<List<Subject>>(restResponse.Content);
             var deneme = subjects.OrderByDescending(x => x.updateDate);

@@ -21,6 +21,7 @@ namespace _8BD
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://locahost");
                 });
     }
 }

@@ -50,6 +50,21 @@ namespace _8BD.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult Edit(int id, string newsubject, string oldsubject)
+        {
+            var apiendpoint = $"/subjects/edit/{id}/{newsubject}";
+            var entry = _helper.GetApiEndpoint<Entry>(apiendpoint);
+            return Redirect($"/subject?search={newsubject}");
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var apiendpoint = $"/subjects/delete/{id}";
+            var entry = _helper.GetApiEndpoint<Entry>(apiendpoint);
+            return View("~/Views/Home/Index.cshtml");
+        }
+
 
         public ActionResult GetPaggedData(int pageNumber = 1, int pageSize = 20)
         {

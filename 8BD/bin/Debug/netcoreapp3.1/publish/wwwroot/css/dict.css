@@ -36,11 +36,10 @@
 
 
 .sidebar-entryheaders {
-    text-align: center;
+    text-align: left;
     font-size: 13px;
     font-family: monospace;
-    margin-top: -15px;
-    font-family: monospace;
+   
 }
 .profilistatistik:hover {
     background-color: #f9f9f9;
@@ -57,13 +56,17 @@
 }
 .profilquote {
     min-height:30px;
-    weight: 700px;
+  
     background: #f9f9f9;
     border-left: 10px solid #ccc;
     margin-top: 20px;
     margin-bottom: 10px;
     padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
+    
+}
+.quote{
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
 }
 .nav-item{
     font-family: monospace;
@@ -74,3 +77,15 @@ a{
 .monospace{
     font-family: monospace;
 }
+.subject-buttons{
+    margin-top:-15px;
+    margin-bottom:20px;
+
+}
+.modbut{
+    margin-left:2px;
+}
+.modbut:hover{
+    color:darkred;
+}
+

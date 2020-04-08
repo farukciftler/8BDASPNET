@@ -9,16 +9,18 @@
 }
 
 <h2 class="monospace"> Başlık Düzenleme</h2>
-<form action="/" method="post">
+<form  asp-controller="subject" asp-action="edit" method="post">
 
     <div class="md-form">
         <label for="form1" class="monospace">Eski Başlık:</label>
-        <input type="text" id="form1" class="form-control monospace" placeholder="@subject" disabled>
+        <input type="text" id="form1" name="oldsubject" value="@subject" class="form-control monospace" placeholder="@subject" disabled>
+        <input type="text" id="form1" name="oldsubject" value="@subject" class="form-control monospace"  hidden>
 
     </div>
+    <input type="text" name="id" value="@id"  hidden/>
     <div class="md-form">
         <label for="form1" class="monospace">Yeni Başlık:</label>
-        <input type="text" id="form1" class="form-control monospace">
+        <input type="text" id="form1" name="newsubject" class="form-control monospace">
 
     </div>
 

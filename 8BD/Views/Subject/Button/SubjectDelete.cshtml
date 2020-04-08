@@ -16,17 +16,19 @@
     <br />
 
 
-    <form action="/" method="post">
-        <div class="row" style="margin-left:4px;">
-            <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Evet</button>
-            &emsp;
-            <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button>
+    <form asp-controller="subject" asp-action="delete" method="post">
 
-        </div>
 
         <div class="md-form">
             <label for="form1" class="monospace"> Başlık:</label>
+            <input type="type" name="id" value="@id" hidden />
             <input type="text" id="form1" placeholder="@subject" class="form-control monospace" disabled>
+
+        </div>
+        <div class="row" style="margin-left:4px;">
+            <button type="submit" class="btn btn-outline-dark col-md-5 col-sm-8">Evet</button>
+            &emsp;
+            <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button>
 
         </div>
 
