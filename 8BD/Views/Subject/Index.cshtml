@@ -28,7 +28,7 @@
 
         @for (int i = 0; i < @_pagination.getPageNumber(ViewBag.SubjectId); i++)
         {
-            var c = i +1;
+            var c = i + 1;
             <a id='' class='dropdown-item pagination_link ' href='/subject?search=@ViewBag.Subject&pageIndex=@i'>@c</a>
         }
 
@@ -78,52 +78,52 @@
         <div class="row" style="margin-left:4px; margin-bottom:-8px;">
             <a class="modbut" href="/entryedit/@item.id"><i class="far fa-edit "></i></a>
             <a class="modbut" href="/entrydelete/@item.id"><i class="far fa-trash-alt "></i></a>
-            <a class="modbut" href="/entrytransfer/@item.id"><i class="fas fa-exchange-alt "></i></a>
-        </div>
+            <!--<a class="modbut" href="/entrytransfer/@item.id"><i class="fas fa-exchange-alt "></i></a>-->
+                    </div>
 
 
-        <br />
-        <hr class="entry-hr">
-    }
-    if (ViewBag.Name != null)
-    {
-        @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
-    }
-    else
-    {
-        <br>
-        <div class="quote">
-            <h4 class="subject-header">Tanım girebilmek için lütfen üye olunuz veya hesabınıza giriş yapınız.</h4>
-        </div>
-    }
-}
-else
-{
-    if (ViewBag.Name != null)
-    {
+                    <br />
+                    <hr class="entry-hr">
+                }
+                if (ViewBag.Name != null)
+                {
+                    @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
+                }
+                else
+                {
+                    <br>
+                    <div class="quote">
+                        <h4 class="subject-header">Tanım girebilmek için lütfen üye olunuz veya hesabınıza giriş yapınız.</h4>
+                    </div>
+                }
+            }
+            else
+            {
+                if (ViewBag.Name != null)
+                {
 
-        @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
-    }
-    else if (ViewData["Entries"] != null)
-    {
+                    @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
+                }
+                else if (ViewData["Entries"] != null)
+                {
 
-        <br>
-        <h4 class="monospace">Böyle bir başlık bulunmamaktadır.</h4>
-        <h4 class="monospace">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
-    }
-}
+                    <br>
+                    <h4 class="monospace">Böyle bir başlık bulunmamaktadır.</h4>
+                    <h4 class="monospace">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
+                }
+            }
 
-<script>
-    function CopyLink() {
-        var dummy = document.createElement('input'),
-            text = window.location.href;
+            <script>
+                function CopyLink() {
+                    var dummy = document.createElement('input'),
+                        text = window.location.href;
 
-        document.body.appendChild(dummy);
-        dummy.value = text;
-        dummy.select();
-        document.execCommand('copy');
-        document.body.removeChild(dummy);
-        alert("Link Kopyalandı!");
+                    document.body.appendChild(dummy);
+                    dummy.value = text;
+                    dummy.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(dummy);
+                    alert("Link Kopyalandı!");
 
-    }
-</script>
+                }
+            </script>

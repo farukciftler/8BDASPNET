@@ -10,7 +10,7 @@
     var entry = ViewData["Entry"] as Entry;
 }
 
-<h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>   
+<h4 class="subject-header"><b>@ViewBag.Subject  </b></h4>
 @if (ViewData["Entry"] != null)
 {
 
@@ -35,61 +35,61 @@
             {@c}
         </p>
     </div>
-   <div class="row" style="margin-left:4px; margin-bottom:-8px;">
-            <a class="modbut" href="/entryedit/@entry.id"><i class="far fa-edit "></i></a>
-            <a class="modbut" href="/entrydelete/@entry.id"><i class="far fa-trash-alt "></i></a>
-            <a class="modbut" href="/entrytransfer/@entry.id"><i class="fas fa-exchange-alt "></i></a>
-        </div>
-    <br />
+    <div class="row" style="margin-left:4px; margin-bottom:-8px;">
+        <a class="modbut" href="/entryedit/@entry.id"><i class="far fa-edit "></i></a>
+        <a class="modbut" href="/entrydelete/@entry.id"><i class="far fa-trash-alt "></i></a>
+        <!--   <a class="modbut" href="/entrytransfer/@entry.id"><i class="fas fa-exchange-alt "></i></a>-->
+                </div>
+            <br />
 
-    <hr class="entry-hr">
-    <a href="#"><li class="list-group-item" style="text-align:center">daha sonraki tanımlar</li></a>
+            <hr class="entry-hr">
+            <a href="#"><li class="list-group-item" style="text-align:center">daha sonraki tanımlar</li></a>
 
-    if (ViewBag.Name != null)
-    {
-        @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
-    }
-    else
-    {
-        <br>
-        <div class="quote">
-            <h4 class="subject-header">Tanım girebilmek için lütfen üye olunuz veya hesabınıza giriş yapınız.</h4>
-        </div>
-    }
-}
-else
-{
-    if (ViewBag.Name != null)
-    {
+            if (ViewBag.Name != null)
+            {
+                @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
+            }
+            else
+            {
+                <br>
+                <div class="quote">
+                    <h4 class="subject-header">Tanım girebilmek için lütfen üye olunuz veya hesabınıza giriş yapınız.</h4>
+                </div>
+            }
+        }
+        else
+        {
+            if (ViewBag.Name != null)
+            {
 
-        @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
-    }
-    else if (ViewData["Entry"] != null)
-    {
+                @await Html.PartialAsync("../Shared/DictComponents/EntryAdd")
+            }
+            else if (ViewData["Entry"] != null)
+            {
 
-        <br>
-        <h4 class="monospace">Böyle bir tanom bulunmamaktadır.</h4>
-        <h4 class="monospace">Tanım yazmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
-    }
-
-
+                <br>
+                <h4 class="monospace">Böyle bir tanom bulunmamaktadır.</h4>
+                <h4 class="monospace">Tanım yazmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
+            }
 
 
 
 
 
-}
-<script>
-    function CopyLink() {
-        var dummy = document.createElement('input'),
-            text = window.location.href;
 
-        document.body.appendChild(dummy);
-        dummy.value = text;
-        dummy.select();
-        document.execCommand('copy');
-        document.body.removeChild(dummy);
-        alert("Link Kopyalandı!");
 
-    }
-</script>
+        }
+        <script>
+            function CopyLink() {
+                var dummy = document.createElement('input'),
+                    text = window.location.href;
+
+                document.body.appendChild(dummy);
+                dummy.value = text;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                alert("Link Kopyalandı!");
+
+            }
+        </script>

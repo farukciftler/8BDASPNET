@@ -11,32 +11,32 @@
 <br />
 
 
-
+<form asp-controller="entry" asp-action="delete" method="post">
     <div class="md-form">
         <label for="form1" class="monospace"> Başlık:</label>
         <input type="text" id="form1" placeholder="@_helper.GetSubjectNameById(@entry.subjectId)" class="form-control monospace" disabled>
     </div>
     <div class="md-form">
         <label for="form1" class="monospace"> Tanım:</label>
-        <textarea type="text" name="entry" id="girdi-area" value=""  placeholder="@entry.entry"class="md-textarea form-control" rows="3" disabled></textarea>
+        <textarea type="text" name="entry" id="girdi-area" value="" placeholder="@entry.entry" class="md-textarea form-control" rows="3" disabled></textarea>
     </div>
     <div class="md-form">
         <label for="form1" class="monospace"> Silme sebebi:</label>
-        <input type="text" id="form1"  class="form-control monospace" >
+        <input type="text" name="reason" class="form-control monospace">
+        <input type="text" name="id" value="@entry.id" hidden />
     </div>
     <br>
     <div class="quote">
-    <h4 class="subject-header">Yukarıdaki tanımı silmek istediğinize emin misiniz?</h4>
-</div>
-<br />
-
-
-<form action="/" method="post">
-    <div class="row" style="margin-left:4px;">
-        <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Evet</button>
-        &emsp;
-        <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button>
-
+        <h4 class="subject-header">Yukarıdaki tanımı silmek istediğinize emin misiniz?</h4>
     </div>
+    <br />
+
+
+    <br /> 
+    <button type="submit" class="btn btn-outline-dark col-md-5 col-sm-8">Evet</button>
+    &emsp;
+    <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button>
+
+
 
 </form>
