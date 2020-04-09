@@ -22,6 +22,6 @@
 
     @foreach (var item in helper.getSubjects() as IOrderedEnumerable<_8BD.Models.Subject>)
     {
-        <a href="/Subject?search=@item.subject" class="monospace"><li class="list-group-item">@item.subject</li></a>
+        <a href="@Configuration["AppHost"]/Subject?search=@item.subject" class="monospace"><li class="list-group-item">@item.subject</li></a>
     }
 </ul>

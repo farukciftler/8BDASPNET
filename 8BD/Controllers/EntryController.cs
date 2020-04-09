@@ -81,7 +81,7 @@ namespace _8BD.Controllers
             "/",
             subject.Split("/").Select(s => System.Net.WebUtility.UrlEncode(s))
             );
-            var subjecturl = "/subject?search=" + subject;
+            var subjecturl = configuration["AppHost"] + "/subject?search=" + subject;
             return Redirect(subjecturl);
         }
     }

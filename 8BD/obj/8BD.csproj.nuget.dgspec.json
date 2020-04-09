@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Workspace\\8BD\\8BDASPNET\\8BD\\8BD.csproj": {}
+    "C:\\Users\\abdul\\Documents\\Projects\\8BDASPNET\\8BD\\8BD.csproj": {}
   },
   "projects": {
-    "D:\\Workspace\\8BD\\8BDASPNET\\8BD\\8BD.csproj": {
+    "C:\\Users\\abdul\\Documents\\Projects\\8BDASPNET\\8BD\\8BD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workspace\\8BD\\8BDASPNET\\8BD\\8BD.csproj",
+        "projectUniqueName": "C:\\Users\\abdul\\Documents\\Projects\\8BDASPNET\\8BD\\8BD.csproj",
         "projectName": "8BD",
-        "projectPath": "D:\\Workspace\\8BD\\8BDASPNET\\8BD\\8BD.csproj",
-        "packagesPath": "C:\\Users\\faruk.ciftler\\.nuget\\packages\\",
-        "outputPath": "D:\\Workspace\\8BD\\8BDASPNET\\8BD\\obj\\",
+        "projectPath": "C:\\Users\\abdul\\Documents\\Projects\\8BDASPNET\\8BD\\8BD.csproj",
+        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abdul\\Documents\\Projects\\8BDASPNET\\8BD\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\faruk.ciftler\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -82,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
