@@ -8,7 +8,7 @@
 
 }
 <h2 class="monospace"> Tanım Düzenle</h2>
-<form asp-controller="entry" asp-action="edit" method="post">
+<form action="/" method="post">
 
     <div class="md-form">
         <label for="form1" class="monospace">Başlık:</label>
@@ -17,7 +17,6 @@
     </div>
 
     <label for="form_message" class="monospace">Tanım:</label>
-    <input type="text" name="id" value="@entry.id" hidden/>
-    <textarea type="text" name="newentry" id="girdi-area" value="@entry.entry" class="md-textarea form-control" rows="3">@entry.entry</textarea>
+    <textarea type="text" name="entry" id="girdi-area" value="" placeholder="@entry.entry" class="md-textarea form-control" rows="3" ></textarea>
     <button type="submit" class="btn btn-dark monospace" style="margin-top: 10px;  float: right;">Gönder</button>
 </form>
