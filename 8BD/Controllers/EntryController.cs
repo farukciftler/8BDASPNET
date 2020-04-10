@@ -37,15 +37,34 @@ namespace _8BD.Controllers
 
             ViewBag.Name = HttpContext.Session.GetString("_username");
             ViewBag.Pass = HttpContext.Session.GetString("_password");
-
+            ViewBag.Pass = HttpContext.Session.GetInt32("_level");
 
             return View("~/Views/Subject/SingleEntry.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, string newentry)
+            {
+            newentry = newentry.Replace("\r\n", "<br />").Replace("\n", "<br />");
+            Entry entry = new Entry();
+            entry.entry = newentry;
+            entry.id = id;
+            var apiendpoint = $"/entries/edit";
+            var final = _helper.PostMethod<Entry>(entry, apiendpoint);
+            return Redirect($"/subject?search={_helper.GetSubjectNameById(final.subjectId)}");
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, string reason)
+        {
+            var apiendpoint = $"/entries/delete/{id}/{reason}";
+            var entry = _helper.GetApiEndpoint<Entry>(apiendpoint);
+            return View("~/Views/Home/Index.cshtml");
         }
         [HttpPost]
         public IActionResult AddEntry(string entry, int subjectId=0, string subject=null)
         {
             Entry ent = new Entry();
-            entry = entry.Replace( "\r\n", "<br />" ).Replace( "\n", "<br />" );
+            
             ent.entry = entry;
             
             var d = 0;

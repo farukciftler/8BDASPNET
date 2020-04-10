@@ -3,8 +3,8 @@
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 @inject SidebarHelper helper;
-
-<h1 class="sidebar-header">vizyondaki başlıklar </h1>
+    <br>
+<h1 class="sidebar-header" style="text-decoration:underline;">vizyondaki başlıklar </h1>
  <!--
 <div style='margin-bottom:10px; justify-content:center;' class='dropdown'>
 
@@ -15,13 +15,13 @@
     </div><button id='sag' class='btn btn-sm artir btn-outline-secondary'><i class='fa fa-angle-right'></i></button>
 </div> -->
 
-<br>
+
 <ul class="list-group">
 
 
 
     @foreach (var item in helper.getSubjects() as IOrderedEnumerable<_8BD.Models.Subject>)
     {
-        <a href="@Configuration["AppHost"]/Subject?search=@item.subject" class="monospace"><li class="list-group-item">@item.subject</li></a>
+        <a href="/Subject?search=@item.subject" class="monospace" style="font-size:14px;"><li class="list-group-item">@item.subject</li></a>
     }
 </ul>

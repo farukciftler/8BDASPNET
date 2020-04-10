@@ -17,6 +17,7 @@ namespace _8BD.Controllers
         IConfiguration configuration;
         const string SessionName = "_username";
         const string SessionPass = "_token";
+        const string SessionLevel = "_level";
         private readonly HttpHelper _helper;
         public LoginController( IConfiguration configuration, HttpHelper helper)
         {
@@ -32,7 +33,9 @@ namespace _8BD.Controllers
             var token = _helper.GetToken(username, password);
             if(token != null)
             {
-                //
+                var apiendpoint =$"/users/username/{username}" ;
+                var user = _helper.GetApiEndpoint<User>(apiendpoint);
+                HttpContext.Session.SetInt32(SessionLevel, user.userLevel);
                 HttpContext.Session.SetString(SessionName, username);
                 HttpContext.Session.SetString(SessionPass, token);
             }
@@ -44,6 +47,12 @@ namespace _8BD.Controllers
             HttpContext.Session.Clear();
 
             return Redirect("../Home/Index");
+        }
+        public IActionResult RegisterContract()
+        {
+            
+
+            return View();
         }
         public IActionResult Register()
         {

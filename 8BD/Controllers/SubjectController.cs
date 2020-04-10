@@ -47,6 +47,7 @@ namespace _8BD.Controllers
             
             ViewBag.Name = HttpContext.Session.GetString("_username");
             ViewBag.Pass = HttpContext.Session.GetString("_password");
+            ViewBag.Level = HttpContext.Session.GetInt32("_level");
 
             return View();
         }

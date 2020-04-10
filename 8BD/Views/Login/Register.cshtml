@@ -14,7 +14,7 @@
                 <label class="control-label monospace" for="username">kullanıcı adı</label>
                 <div class="controls">
                     <input type="text" id="username" name="username" placeholder="" class="input-xlarge monospace">
-                    <p class="help-block monospace">username can contain any letters or numbers, without spaces</p>
+                    <p class="help-block monospace" style="font-size:13px;">kullanıcı adınızı seçerken sonradan değiştiremeyeceğinizi unutmayın:)</p>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                 <label class="control-label monospace" for="email">email</label>
                 <div class="controls">
                     <input type="text" id="email" name="email" placeholder="" class="input-xlarge monospace">
-                    <p class="help-block monospace">please provide your E-mail</p>
+                    <p class="help-block monospace" style="font-size:13px;">size arasıra mektup yollayabilmemiz için sanal posta adresinizi rica ediyoruz.</p>
                 </div>
             </div>
             <div class="control-group">
@@ -31,15 +31,17 @@
                 <label class="control-label monospace" for="password">şifre</label>
                 <div class="controls">
                     <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                    <p class="help-block monospace">password should be at least 4 characters</p>
+                    <p class="help-block monospace" style="font-size:13px;">işe biraz gizem katmak için parolanızı rica ediyoruz. en gizemlisinden...</p>
                 </div>
             </div>
-             
+            <input type="checkbox" id="approve" name="approve">
+            <label class="monospace" style="font-size:13px;"> <a asp-controller="login" asp-action="registercontract"><b>filmci sözlük kullanıcı sözleşmesi</b></a>ni okudum ve kabul ediyorum.</label><br>
             <div class="control-group">
                 <!-- Button -->
                 <div class="controls">
                     <button class="btn btn-outline-secondary monospace"> kayıt Ol</button>
                 </div>
             </div>
+
         </fieldset>
     </form>
