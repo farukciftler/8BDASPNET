@@ -25,7 +25,8 @@ namespace _8BD.Controllers
         public IActionResult Index(string search, int entryid)
         {
             if (search != null)
-            { 
+            {
+                search = search.ToLower();
                 var apiendpoint = "/entries/" + entryid.ToString();
                 
                 var entry = _helper.GetApiEndpoint<Entry>(apiendpoint);
@@ -38,6 +39,7 @@ namespace _8BD.Controllers
             ViewBag.Name = HttpContext.Session.GetString("_username");
             ViewBag.Pass = HttpContext.Session.GetString("_password");
             ViewBag.Pass = HttpContext.Session.GetInt32("_level");
+            ViewBag.UserId = HttpContext.Session.GetInt32("_id");
 
             return View("~/Views/Subject/SingleEntry.cshtml");
         }
@@ -54,19 +56,26 @@ namespace _8BD.Controllers
             return Redirect($"/subject?search={_helper.GetSubjectNameById(final.subjectId)}");
         }
         [HttpPost]
-        public ActionResult Delete(int id, string reason)
+        public ActionResult Delete(int id, string reason )
         {
+            if (reason == null)
+            {
+                reason = "standart";
+            }
             var apiendpoint = $"/entries/delete/{id}/{reason}";
             var entry = _helper.GetApiEndpoint<Entry>(apiendpoint);
             return View("~/Views/Home/Index.cshtml");
         }
         [HttpPost]
-        public IActionResult AddEntry(string entry, int subjectId=0, string subject=null)
+        public IActionResult AddEntry(string entry, int subjectId = 0, string subject = null)
         {
             Entry ent = new Entry();
-            
+            Subject newsubject = new Subject();
+            newsubject.subject = subject;
+            newsubject.BSHIU = "";
+            entry = entry.Replace("\r\n", "<br />").Replace("\n", "<br />");
             ent.entry = entry;
-            
+
             var d = 0;
             var token = HttpContext.Session.GetString("_token");
             if (subjectId == 0)
@@ -74,9 +83,9 @@ namespace _8BD.Controllers
                 d = _helper.GetSubjectIdByName(subject);
                 if (d == 0)
                 {
-                    Subject newsubject = new Subject();
-                    newsubject.subject = subject;
-                    var c= _helper.PostMethod<Subject>(newsubject, "/subjects", token);
+                    
+                    
+                    var c = _helper.PostMethod<Subject>(newsubject, "/subjects", token);
 
                     ent.subjectId = c.id;
                 }
@@ -84,23 +93,23 @@ namespace _8BD.Controllers
                 {
                     ent.subjectId = d;
                 }
-                
+
 
             }
             else
             {
                 ent.subjectId = subjectId;
             }
-            
-            
-            
-            
+
+
+
+
             _helper.PostMethod<Entry>(ent, "/Entries", token);
-            subject =String.Join(
+            subject = String.Join(
             "/",
             subject.Split("/").Select(s => System.Net.WebUtility.UrlEncode(s))
             );
-            var subjecturl = configuration["AppHost"] + "/subject?search=" + subject;
+            var subjecturl = "/subject?search=" + subject;
             return Redirect(subjecturl);
         }
     }

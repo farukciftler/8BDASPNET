@@ -54,7 +54,7 @@
     <hr>
     <div class="row" style="margin-left:4px; margin-top:-16px;">
         <a class="modbut" onclick="CopyLink();" title="Linki kopyala" href="#"><i class="fas fa-link"></i></a>
-        @if (ViewBag.Name != null)
+        @if (ViewBag.Level >6)
         {
             <a class="modbut" href="/subjectedit/@ViewBag.SubjectId"><i class="far fa-edit "></i></a>
             <a class="modbut" href="/subjectdelete/@ViewBag.SubjectId"><i class="far fa-trash-alt "></i></a>
@@ -72,14 +72,15 @@
         <a style="float:right; font-size:12px;" class="monospace" href="/entry/@ViewBag.Subject/@item.id">#@item.id </a>
         <br />
         <p class="entry">@Html.Raw(_regex.PregReplace(@item.entry, _regex.patterns, _regex.replacements))</p>
+   
         <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-            <a href="/entry/@ViewBag.Subject/@item.id"><p class="entry-date monospace">@item.createDate.ToString("MM.dd.yyyy H:mm")</p></a> | <p class="monospace entry-author">
+            <a href="/entry/@ViewBag.Subject/@item.id"><p class="entry-date monospace">@item.createDate.ToString("dd.MM.yyyy H:mm")</p></a> | <p class="monospace entry-author">
                 @if (c != null)
                 {@c}
             </p>
         </div>
         <div class="row" style="margin-left:4px; margin-bottom:-8px;">
-            @if (ViewBag.Name != null)
+            @if (item.authorId == ViewBag.UserId || ViewBag.Level > 6)
             {
                 <a class="modbut" href="/entryedit/@item.id"><i class="far fa-edit "></i></a>
                 <a class="modbut" href="/entrydelete/@item.id"><i class="far fa-trash-alt "></i></a>
@@ -132,4 +133,59 @@
                     alert("Link Kopyalandı!");
 
                 }
+
+                //sdd
+
+                $(document).ready(function () {
+                    //LIKE
+                    $(document).on("click", "a.like", function () {
+                        var id = $(this).data("id");
+                        var link = "/Vote/LikeThis/" + id;
+                        var a1 = '#entry_' + id;
+                        var a = $(a1);
+                        $.ajax({
+                            type: "GET",
+                            url: link,
+                            success: function (result) {
+                                a.html('<i class="far fa-thumbs-up"> (' + result + ')');
+                            }
+                        });
+                        /*var link2 = "/Vote/unlikecount/" + id;
+                        var a2 = $("a.unlike");
+                        $.ajax({
+                            type: "GET",
+                            url: link2,
+                            success: function (result) {
+                                a2.html('<i class="far fa-thumbs-down"> (' + result + ')');
+                            }
+                        });*/
+                    });
+                    //UNLIKE
+                    $(document).on("click", "a.unlike", function () {
+                        var id = $(this).data("id");
+                        var link = "/Vote/UnlikeThis/" + id;
+                        var a1 = '#entry_' + id;
+                        var a = $(a1);
+                        $.ajax({
+                            type: "GET",
+                            url: link,
+                            success: function (result) {
+                                a.html('<i class="far fa-thumbs-down"> (' + result + ')');
+                            }
+                        });
+                       /* var link2 = "/Vote/likecount/" + id;
+                        var a2 = $("a.like");
+                        $.ajax({
+                            type: "GET",
+                            url: link2,
+                            success: function (result) {
+                                a2.html('<i class="far fa-thumbs-up"> (' + result + ')');
+                            }
+                        });*/
+
+                    });
+
+                    
+
+                });
             </script>

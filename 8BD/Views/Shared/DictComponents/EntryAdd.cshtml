@@ -1,29 +1,30 @@
 ﻿@using _8BD.Helpers;
 @inject HttpHelper _helper;
 
-<form class="" asp-controller="Entry" asp-action="Addentry" method="post">
+    <form class="" asp-controller="Entry" asp-action="Addentry" method="post">
 
 
 
-    <input type="text" name="subject" value="@ViewBag.Subject" placeholder="" style="width: 100%;" hidden>
-    <input type="text" name="subjectId" value="@_helper.GetSubjectIdByName(ViewBag.Subject)" hidden />
-    <br><br>
+        <input type="text" name="subject" value="@ViewBag.Subject" placeholder="" style="width: 100%;" hidden>
+        <input type="text" name="subjectId" value="@_helper.GetSubjectIdByName(ViewBag.Subject)" hidden />
+        <br><br>
 
-    <label for="" style="" class="monospace">Tanım: </label>
+        <label for="" style="" class="Helvetica">Tanım: </label>
 
-    <textarea type="text" name="entry" id="girdi-area" value="" class="md-textarea form-control monospace" rows="3" required></textarea>
+        <textarea type="text" name="entry" id="girdi-area" value="" class="md-textarea form-control Helvetica" rows="3" required></textarea>
 
 
 
-    <button id="girdi-area2" type="button" class="btn btn-dark monospace" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('b');">b</button>
-    <button type="button" class="btn btn-dark monospace" style="margin-top: 10px; margin-right: 2px; float: left" onClick="formatText ('i');">i</button>
-    <button type="button" class="btn btn-dark monospace" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('bkz');">bkz</button>
-    <button type="button" class="btn btn-dark monospace" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('gbkz');">gbkz</button>
-    <button type="button" class="btn btn-dark monospace" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="alinti();">alıntı</button>
-    <button type="button" class="btn btn-dark monospace" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="spoiler();">spoiler</button>
-    <button type="submit" class="btn btn-dark monospace" style="margin-top: 10px;  float: right;">Gönder</button>
+        <button id="girdi-area2" type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('b');">b</button>
+        <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px; float: left" onClick="formatText ('i');">i</button>
+        <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('bkz');">bkz</button>
+        <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('gbkz');">gbkz</button>
+        <!-- <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('u');">*</button>-->
+        <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="alinti();">alıntı</button>
+        <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="spoiler();">spoiler</button>
+        <button type="submit" class="btn btn-dark Helvetica" style="margin-top: 10px;  float: right;">Gönder</button>
 
-</form>
+    </form>
 
 <script>
 

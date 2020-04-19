@@ -3,9 +3,13 @@
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 @inject SidebarHelper helper;
-    <br>
+@inject SidebarHelper _helper;
+@{
+    var c = helper.getSubjects();
+}
+<br>
 <h1 class="sidebar-header" style="text-decoration:underline;">vizyondaki başlıklar </h1>
- <!--
+<!--
 <div style='margin-bottom:10px; justify-content:center;' class='dropdown'>
 
     <button id='sol' style='margin-left:33%;' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-left'></i></button>
@@ -20,8 +24,20 @@
 
 
 
-    @foreach (var item in helper.getSubjects() as IOrderedEnumerable<_8BD.Models.Subject>)
+    @foreach (var item in (IEnumerable<Subject>)c)
     {
-        <a href="/Subject?search=@item.subject" class="monospace" style="font-size:14px;"><li class="list-group-item">@item.subject</li></a>
+        <a href="/Subject?search=@item.subject" class="Helvetica" style="font-size:14px; ">
+            <li style="-webkit-touch-callout: none;
+      -khtml-user-select: none;
+      -moz-user-select: -moz-none;
+      -ms-user-select: none;
+      user-select: none;
+      line-height:1.5em; margin-bottom:0px;  " class="list-group-item d-flex justify-content-between align-items-center list-group-item-action  loadcenter ">
+                @item.subject
+                <span style="background-color:black;" class="badge badge-dark badge-pill pull-right sidebaryuvarlak">
+                    0
+                </span>
+            </li>
+        </a>
     }
 </ul>

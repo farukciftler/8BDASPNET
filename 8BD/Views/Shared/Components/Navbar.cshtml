@@ -1,26 +1,33 @@
 ﻿<hr style="border:none;height:6px;color:black;background-color:black; margin-bottom: 0px; margin-top: -1.5px;" />
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" role="navigation">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-navbar border-bottom box-shadow mb-3" role="navigation">
     <div class="container">
         
         <button id="gizleac" class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" style="top: 8px; right:8px; height:40px;" aria-label="Toggle navigation">
-            <span class="" style="height: 30px"><i class="fas fa-globe-africa fa-lg"></i></span>
+            <span class="" style="height: 30px"><i class="fas fa-video-camera fa-lg"></i></span>
         </button>
-        <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="letter-spacing:1px;"><b>inveonterimleri</b></a>
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="letter-spacing:1px;"><b>filmcisözlük</b></a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             &#9776;
         </button>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
             <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-comment-alt"></i> posta</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-quote-left"></i> blog</a></li>
-                <li class="nav-item"><a href="/announcements" class="nav-link"><i class="fas fa-bullhorn"></i> duyurular</a></li>
-
-
+                <li class="nav-item"><a href="http://sinemaguncesi.com" class="nav-link" target="_blank"><i class="fas fa-quote-left"></i> sinemagüncesi</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i> duyurular</a></li>
+                @if (ViewBag.Name == null)
+                    {
+                
+                <li class="nav-item mobileShow" ><a href="/Login/IndexPage" class="nav-link"><i class="fas fa-sign-in-alt"></i>    giriş </a> </li>
+                <li class="nav-item mobileShow" > <a href="/Login/Register" class="nav-link "><i class="fas fa-angle-double-right"></i>    kayıt ol</a> </li>
+                    }
+                else{
+            <a asp-controller="Login" asp-action="Logout" class="nav-link mobileShow"> <li class="nav-item " class="dropdown-item Helvetica"><i class="fas fa-sign-out-alt"></i> <b>çıkış</b></li></a>
+                }
             </ul>
 
             <form class="form-inline" method="GET" asp-controller="Subject" asp-action="Index">
                 <div style="display: flex; align-items: center;">
-                    <input class="form-control mr-sm-2 search-input monospace" type="search" placeholder="yazsana bişiler" name="search" id="search" required>
+                    <input class="form-control mr-sm-2 search-input Helvetica" type="search" placeholder="yazsana bişiler" name="search" id="search" required>
                     <button class="btn btn-light" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
@@ -36,45 +43,47 @@
                     {
 
 
-                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle monospace"><i class="fas fa-sign-in-alt"></i>    giriş <span class="caret"></span></button>
+                <li class="nav-item mobileHide"><a href="/Login/IndexPage" class="nav-link"><i class="fas fa-sign-in-alt"></i>    giriş </a> </li>
+                <li class="nav-item mobileHide"> <a href="/Login/Register" class="nav-link "><i class="fas fa-angle-double-right"></i>    kayıt ol</a> </li>
                     }
                     else
                     {
 
-                    <div class="dropdown">
-                        <button type="button" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle monospace"><i class="far fa-user"></i>  @ViewBag.Name <span class="caret"></span></button>
+                <div class="dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle Helvetica mobileHide"><i class="far fa-user"></i>  @ViewBag.Name <span class="caret"></span></button>
 
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item monospace" asp-controller="Profile" asp-action="Index"><i class="fas fa-user-circle"></i> benlik</a>
-                            <a class="dropdown-item monospace" href="#"><i class="fas fa-cog"></i> ayarlar</a>
-                            <a class="dropdown-item monospace" asp-controller="Login" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> <b>çıkış</b></a>
-                        </div>
+                    <div class="dropdown-menu">
+                        <!--<a class="dropdown-item Helvetica" asp-controller="Profile" asp-action="Index"><i class="fas fa-user-circle"></i> benlik</a>
+
+            <a class="dropdown-item Helvetica" href="#"><i class="fas fa-cog"></i> ayarlar</a>    -->
+                        <a class="dropdown-item Helvetica" asp-controller="Login" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> <b>çıkış</b></a>
                     </div>
+                </div>
 
                     }
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
                             <form class="form" role="form" asp-controller="Login" asp-action="Index" method="post">
                                 <div class="form-group">
-                                    <input id="usernameInput" name="username" placeholder="kullanıcı adı" class="form-control form-control-sm monospace" type="text" required="">
+                                    <input id="usernameInput" name="username" placeholder="kullanıcı adı" class="form-control form-control-sm Helvetica" type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" name="password" type="password" placeholder="şifre" class="form-control form-control-sm monospace" required="">
+                                    <input id="passwordInput" name="password" type="password" placeholder="şifre" class="form-control form-control-sm Helvetica" required="">
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-secondary btn-block monospace">giriş</button>
+                                    <button type="submit" class="btn btn-outline-secondary btn-block Helvetica">giriş</button>
                                 </div>
 
                                 <div class="form-group text-center">
-                                    <small><a href="/login/forgotpassword" class="monospace">şifremi unuttum</a></small>
-                                    <small><a asp-controller="Login" asp-action="Register" class="monospace">kayıt ol</a></small>
+                                    <small><a href="/login/forgotpassword" class="Helvetica">şifremi unuttum</a></small>
+                                    <small><a asp-controller="Login" asp-action="Register" class="Helvetica">kayıt ol</a></small>
                                 </div>
                             </form>
                         </li>
                     </ul>
-                </li>
-            </ul>
+                    </li>
+                </ul>
         </div>
     </div>
 </nav>

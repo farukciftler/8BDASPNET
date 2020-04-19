@@ -15,6 +15,7 @@ namespace _8BD.Models
         public string email { get; set; }
         public int userLevel { get; set; }
         public int isApproved { get; set; }
+        public string activationToken { get; set; }
         public int isActive { get; set; }
         public string registerIp { get; set; }
         public DateTime registerDate { get; set; }

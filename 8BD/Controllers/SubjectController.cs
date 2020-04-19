@@ -18,11 +18,9 @@ namespace _8BD.Controllers
     {
         private readonly HttpHelper _helper;
         private readonly SidebarHelper _sidebar;
-        IConfiguration configuration;
 
-        public SubjectController(IConfiguration configuration, HttpHelper helper, SidebarHelper sidebar)
+        public SubjectController( HttpHelper helper, SidebarHelper sidebar)
         {
-            this.configuration = configuration;
             _helper = helper;
             _sidebar = sidebar;
         }
@@ -31,23 +29,36 @@ namespace _8BD.Controllers
         public IActionResult Index(string search, int pageIndex = 0)
         
         {
-
+             
+            search = search.ToLower();
             if(search != null)
             {
-                var sub = _helper.GetApiEndpointSearch(search);
-                var apiendpoint = "/entries?subjectId=" + sub.id.ToString() + "&pageIndex=" +pageIndex;
-                var entries = _helper.GetApiEndpoint<List<Entry>>(apiendpoint);
-                ViewBag.Subject = search;
-                ViewBag.SubjectId = sub.id;
-                ViewBag.Entries = entries;
-                ViewBag.Index = pageIndex;
-                ViewBag.Count = entries.Count();
-                ViewBag.pageIndex = pageIndex;
+      
+
+                try
+                {
+                    var sub = _helper.GetApiEndpointSearch(search);
+                    var apiendpoint = "/entries?subjectId=" + sub.id.ToString() + "&pageIndex=" + pageIndex;
+                    var entries = _helper.GetApiEndpoint<List<Entry>>(apiendpoint);
+                    ViewBag.Subject = search;
+                    ViewBag.SubjectId = sub.id;
+                    ViewBag.Entries = entries;
+                    ViewBag.Index = pageIndex;
+                    ViewBag.Count = entries.Count();
+                    ViewBag.pageIndex = pageIndex;
+                }
+                catch (Exception)
+                {
+
+                    return View("~/Views/Home/Index.cshtml");
+                }
+                
+             
             }
-            
             ViewBag.Name = HttpContext.Session.GetString("_username");
             ViewBag.Pass = HttpContext.Session.GetString("_password");
             ViewBag.Level = HttpContext.Session.GetInt32("_level");
+            ViewBag.UserId = HttpContext.Session.GetInt32("_id");
 
             return View();
         }

@@ -13,16 +13,16 @@
 
 <form asp-controller="entry" asp-action="delete" method="post">
     <div class="md-form">
-        <label for="form1" class="monospace"> Başlık:</label>
-        <input type="text" id="form1" placeholder="@_helper.GetSubjectNameById(@entry.subjectId)" class="form-control monospace" disabled>
+        <label for="form1" class="Helvetica"> Başlık:</label>
+        <input type="text" id="form1" placeholder="@_helper.GetSubjectNameById(@entry.subjectId)" class="form-control Helvetica" disabled>
     </div>
     <div class="md-form">
-        <label for="form1" class="monospace"> Tanım:</label>
+        <label for="form1" class="Helvetica"> Tanım:</label>
         <textarea type="text" name="entry" id="girdi-area" value="" placeholder="@entry.entry" class="md-textarea form-control" rows="3" disabled></textarea>
     </div>
     <div class="md-form">
-        <label for="form1" class="monospace"> Silme sebebi:</label>
-        <input type="text" name="reason" class="form-control monospace">
+        <label for="form1" class="Helvetica"> Silme sebebi:</label>
+        <input type="text" name="reason" class="form-control Helvetica">
         <input type="text" name="id" value="@entry.id" hidden />
     </div>
     <br>
@@ -32,10 +32,10 @@
     <br />
 
 
-    <br /> 
+    <br />
     <button type="submit" class="btn btn-outline-dark col-md-5 col-sm-8">Evet</button>
     &emsp;
-    <button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button>
+    <a href="/Subject?search=@_helper.GetSubjectNameById(@entry.subjectId)"><button type="button" class="btn btn-outline-dark col-md-5 col-sm-8">Vazgeç</button></a>
 
 
 

@@ -26,10 +26,14 @@ namespace _8BD.Helpers
             IRestClient restClient = new RestClient();
             IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/login?username={username}&password={password}");
             var restResponse = restClient.Get(restRequest);
-            var jObject = JObject.Parse(restResponse.Content);
-            string token = jObject.GetValue("token").ToString();
-           
-            return token;
+            string token = null;
+            if(restResponse.Content !="")
+            { 
+                var jObject = JObject.Parse(restResponse.Content);
+                 token = jObject.GetValue("token").ToString();
+            }
+      
+            return token; 
         }
         public T GetApiEndpoint<T>(string apiendpoint)
         {
@@ -49,7 +53,7 @@ namespace _8BD.Helpers
             IRestClient restClient = new RestClient();
             IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/users/userid/" + userid);
             var restResponse = restClient.Get(restRequest);
-            var deserializedobject = "notfound";
+            var deserializedobject = "uçukyazar";
             if (restResponse.StatusCode.ToString() !="NotFound")
             {
                 deserializedobject = JsonConvert.DeserializeObject<string>(restResponse.Content);
@@ -71,7 +75,7 @@ namespace _8BD.Helpers
 
             var deserializedobject = JsonConvert.DeserializeObject<Subject>(restResponse.Content);
            
-             
+            
 
             return deserializedobject.id;
         }
@@ -105,6 +109,7 @@ namespace _8BD.Helpers
 
             return deserializedobject.subject;
         }
+        
 
         public Subject GetApiEndpointSearch(string search)
         {
@@ -120,13 +125,16 @@ namespace _8BD.Helpers
          {
             var client = new RestClient(configuration["ApiAddress"] + uri);
             var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Json };
-            
             if (bearerToken != null)
             {
                 request.AddHeader("Authorization", string.Format("Bearer {0}", bearerToken));
                 request.AddHeader("Accept", "application/json; charset=utf-8"); //İŞE YARAMIYOR
-             
 
+
+            }
+            else
+            {
+                request.AddHeader("Accept", "application/json; charset=utf-8");
             }
 
             var result = GetResult<T>(client, request, obj, headers);

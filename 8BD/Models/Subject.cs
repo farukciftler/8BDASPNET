@@ -7,6 +7,7 @@ namespace _8BD.Models
 {
     public class Subject
     {
+       
         public int id { get; set; }
         public int authorId { get; set; }
         public string subject { get; set; }

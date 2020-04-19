@@ -17,29 +17,35 @@
     <hr>
     <div class="row" style="margin-left:4px; margin-top:-16px;">
         <a class="modbut" onclick="CopyLink();" title="Linki kopyala" href="#"><i class="fas fa-link"></i></a>
-        <a class="modbut" href="/subjectedit/@ViewBag.SubjectId"><i class="far fa-edit "></i></a>
-        <a class="modbut" href="/subjectdelete/@ViewBag.SubjectId"><i class="far fa-trash-alt "></i></a>
-        <!--   <a class="modbut" href="/subjecthide/@ViewBag.SubjectId"><i class="far fa-eye-slash "></i></a>-->
-    </div>
+        @if ( ViewBag.Level > 6)
+        {
+            <a class="modbut" href="/subjectedit/@ViewBag.SubjectId"><i class="far fa-edit "></i></a>
+            <a class="modbut" href="/subjectdelete/@ViewBag.SubjectId"><i class="far fa-trash-alt "></i></a>
+            <!--   <a class="modbut" href="/subjecthide/@ViewBag.SubjectId"><i class="far fa-eye-slash "></i></a>-->
+        }
+        </div>
     <br />
     <a href="#"><li class="list-group-item" style="text-align:center">daha önceki tanımlar</li></a>
     <br />
     <hr />
     var c = @_helper.GetUsername(entry.authorId);
-    <a style="float:right; font-size:12px;" class="monospace" href="/entry/@ViewBag.Subject/@entry.id">#@entry.id </a>
+    <a style="float:right; font-size:12px;" class="Helvetica" href="/entry/@ViewBag.Subject/@entry.id">#@entry.id </a>
     <br />
     <p class="entry">@Html.Raw(_regex.PregReplace(entry.entry, _regex.patterns, _regex.replacements))</p>
     <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-        <a href="/entry/@ViewBag.Subject/@entry.id"><p class="entry-date monospace">@entry.createDate.ToString("MM.dd.yyyy H:mm")</p></a> | <p class="monospace entry-author">
+        <a href="/entry/@ViewBag.Subject/@entry.id"><p class="entry-date Helvetica">@entry.createDate.ToString("dd.MM.yyyy H:mm")</p></a> | <p class="Helvetica entry-author">
             @if (c != null)
             {@c}
         </p>
     </div>
     <div class="row" style="margin-left:4px; margin-bottom:-8px;">
-        <a class="modbut" href="/entryedit/@entry.id"><i class="far fa-edit "></i></a>
-        <a class="modbut" href="/entrydelete/@entry.id"><i class="far fa-trash-alt "></i></a>
-        <!--   <a class="modbut" href="/entrytransfer/@entry.id"><i class="fas fa-exchange-alt "></i></a>-->
-                </div>
+        @if (entry.authorId == ViewBag.UserId || ViewBag.Level > 6)
+        {
+            <a class="modbut" href="/entryedit/@entry.id"><i class="far fa-edit "></i></a>
+            <a class="modbut" href="/entrydelete/@entry.id"><i class="far fa-trash-alt "></i></a>
+            <!--   <a class="modbut" href="/entrytransfer/@entry.id"><i class="fas fa-exchange-alt "></i></a>-->
+        }
+        </div>
             <br />
 
             <hr class="entry-hr">
@@ -68,8 +74,8 @@
             {
 
                 <br>
-                <h4 class="monospace">Böyle bir tanom bulunmamaktadır.</h4>
-                <h4 class="monospace">Tanım yazmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
+                <h4 class="Helvetica">Böyle bir tanom bulunmamaktadır.</h4>
+                <h4 class="Helvetica">Tanım yazmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
             }
 
 

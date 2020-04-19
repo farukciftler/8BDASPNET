@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using _8BD.Configuration;
 using _8BD.Helpers;
+using Exceptionless;
+
 namespace _8BD
 {
     public class Startup
@@ -47,6 +49,8 @@ namespace _8BD
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseExceptionless("FERx7htWy1gBQWu27HRhQsks9nAIHfkpycjsClpa");
             app.UseSession();
             app.UseStaticFiles();
 

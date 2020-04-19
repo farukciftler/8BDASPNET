@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ if (@ViewBag.Message != null)
+    {
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Message
+    </div>
+    }
+}
+<form class="form-horizontal" asp-controller="Login" asp-action="Index" method="POST">
+    <fieldset>
+        <div id="legend">
+            <legend class="Helvetica" style="text-decoration: underline">giriş</legend>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label Helvetica" for="username">kullanıcı adı</label>
+            <div class="controls">
+                <input type="text" id="username" name="username" placeholder="" class="input-xlarge Helvetica">
+
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <!-- Password-->
+            <label class="control-label Helvetica" for="password">şifre</label>
+            <div class="controls">
+                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                <a href="/Login/ForgotPassword"> <b><p class="help-block Helvetica" style="font-size:12px;">şifreyi unutttum</p></b></a>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <button class="btn btn-outline-secondary Helvetica">  giriş</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

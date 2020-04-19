@@ -1,12 +1,12 @@
 ﻿.header-subject {
     font-size: 18px;
-    font-family: monospace;
+    font-family: Helvetica;
     text-transform: lowercase;
 }
 
 .entry {
     font-size: 14px;
-    font-family: monospace;
+    font-family: Helvetica;
     text-transform: lowercase;
 }
 
@@ -24,21 +24,21 @@
 }
 .subject-header{
     font-size: 18px;
-    font-family: monospace;
+    font-family: Helvetica;
     text-transform: lowercase;
     margin-bottom: -10px;
 }
 .sidebar-header {
     text-align: center;
     font-size: 18px;
-    font-family: monospace;
+    font-family: Helvetica;
 }
 
 
 .sidebar-entryheaders {
     text-align: left;
     font-size: 13px;
-    font-family: monospace;
+    font-family: Helvetica;
    
 }
 .profilistatistik:hover {
@@ -48,7 +48,7 @@
 .profilistatistik {
     font-size: 12px;
     font-weight: bold;
-    font-family: monospace;
+    font-family: Helvetica;
 }
 
 .profilistatistikheader {
@@ -69,13 +69,13 @@
     border-left: 10px solid #ccc;
 }
 .nav-item{
-    font-family: monospace;
+    font-family: Helvetica;
 }
 a{
  color: #1e211f;   
 }
-.monospace{
-    font-family: monospace;
+.Helvetica{
+    font-family: Arial, Helvetica, sans-serif;
 }
 .subject-buttons{
     margin-top:-15px;
@@ -89,3 +89,95 @@ a{
     color:darkred;
 }
 
+.mobileHide {
+    display: inline;
+}
+
+/* Smartphone Portrait and Landscape */
+@media only screen and (min-device-width : 0px) and (max-device-width : 699px) {
+    .mobileHide {
+        display: none;
+    }
+}
+.mobileShow {
+    display: none;
+}
+
+/* Smartphone Portrait and Landscape */
+@media only screen and (min-device-width : 0px) and (max-device-width : 699px) {
+    .mobileShow {
+        display: inline;
+    }
+}
+
+.badge {
+    float: right;
+}
+
+.sidebaryazi {
+    font-size: 15px;
+}
+
+/*Tooltip*/
+section#tooltip p {
+    margin: 20px 0;
+}
+
+section#tooltip > div > div > p:nth-child(odd)::first-letter {
+    font-weight: normal;
+    float: left;
+    font-size: 4em;
+    line-height: .75;
+    letter-spacing: .15em;
+    margin-top: .2em;
+}
+
+/*Tooltip text*/
+.tooltip {
+    position: relative;
+    color: #00b4ab;
+}
+
+    .tooltip .tooltip-text {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1em;
+        line-height: 1.5em;
+        visibility: hidden;
+        max-width: 300px;
+        background-color: #00b4ab;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 10px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: .3s;
+        transform: translate3d(0px, 20px, 0px);
+    }
+
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #00b4ab transparent transparent transparent;
+        }
+
+    .tooltip:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+    }
+.bg-navbar {
+    background-color: #fffef7;
+}
+body {
+    background-color: #fffef7;
+}

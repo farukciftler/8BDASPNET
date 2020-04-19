@@ -36,7 +36,7 @@
         $.getJSON("/Subject/GetPaggedData", { pageNumber: pageNum, pageSize: pageSize }, function (response) {
             var rowData = "";
             for (var i = 0; i < response.Data.length; i++) {
-                rowData = rowData + '<a href="/Subject?search='+  response.Data[i].subject + '" class="monospace"><li class="list-group-item">'+ response.Data[i].subject + '</li></a>' ;
+                rowData = rowData + '<a href="/Subject?search='+  response.Data[i].subject + '" class="Helvetica"><li class="list-group-item">'+ response.Data[i].subject + '</li></a>' ;
                 
             }
             $("#tblData").append(rowData);

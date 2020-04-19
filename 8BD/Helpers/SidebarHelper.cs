@@ -38,6 +38,28 @@ namespace _8BD.Helpers
             var deneme = subjects.OrderByDescending(x => x.updateDate);
             return deneme;
         }
+        public int GetSubjectCount(int id)
+        {
+            var deserializedobject = 0;
+
+            try
+            {
+                IRestClient restClient = new RestClient();
+                IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/subjects/count/" + id);
+                var restResponse = restClient.Get(restRequest);
+                deserializedobject = JsonConvert.DeserializeObject<int>(restResponse.Content);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
+
+
+            return deserializedobject;
+        }
 
         public int getSubjectsQuantity(int subjectId)
         {
