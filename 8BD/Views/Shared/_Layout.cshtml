@@ -18,7 +18,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 </head>
 <body>
-    <header >
+    <header>
         @await Html.PartialAsync("Components/Navbar")
     </header>
     <div class="container">
@@ -32,12 +32,12 @@
                 </div>
                 @await Html.PartialAsync("Components/Footer")
             </div>
-           
+
         </main>
     </div>
 
-    
-  
+
+    @await Html.PartialAsync("Scripts")
     @RenderSection("Scripts", required: false)
 </body>
 </html>

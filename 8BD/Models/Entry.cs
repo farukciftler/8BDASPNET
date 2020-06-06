@@ -13,6 +13,14 @@ namespace _8BD.Models
         public string entry { get; set; }
         public DateTime createDate { get; set; }
         public DateTime lastUpdateDate { get; set; }
+       
+        public Entry()
+        {
+            entry = "";
+            createDate = DateTime.Now;
+            lastUpdateDate = DateTime.Now;
+        }
     }
+   
 
 }

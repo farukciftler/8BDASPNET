@@ -15,10 +15,21 @@ namespace _8BD.Models
         public string email { get; set; }
         public int userLevel { get; set; }
         public int isApproved { get; set; }
-        public string activationToken { get; set; }
+        public string activationToken { get; set; } 
         public int isActive { get; set; }
         public string registerIp { get; set; }
         public DateTime registerDate { get; set; }
         public DateTime lastLoginDate { get; set; }
+        public User()
+        {
+            username = "";
+            password = "";
+            email = "";
+            activationToken = "";
+            registerIp = "";
+            registerDate = DateTime.Now;
+            lastLoginDate = DateTime.Now;
+        }
     }
+    
 }
