@@ -31,7 +31,6 @@ namespace _8BD.Helpers
             if(restResponse.Content !="")
             { 
                 var jObject = JObject.Parse(restResponse.Content);
-                 token = jObject.GetValue("token").ToString();
                 if (jObject.GetValue("token")!=null)
                 {
                     token = jObject.GetValue("token").ToString();
