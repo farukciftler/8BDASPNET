@@ -23,6 +23,7 @@ namespace _8BD.Helpers
         }
         public string GetToken(string username, string password)
         {
+
             IRestClient restClient = new RestClient();
             IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + $"/login?username={username}&password={password}");
             var restResponse = restClient.Get(restRequest);
@@ -31,8 +32,11 @@ namespace _8BD.Helpers
             { 
                 var jObject = JObject.Parse(restResponse.Content);
                  token = jObject.GetValue("token").ToString();
+                if (jObject.GetValue("token")!=null)
+                {
+                    token = jObject.GetValue("token").ToString();
+                }
             }
-      
             return token; 
         }
         public T GetApiEndpoint<T>(string apiendpoint)

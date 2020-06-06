@@ -6,6 +6,6 @@ bu işlemin davranışını düzenleyebilirsiniz. Bununla ilgili daha fazla bilg
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAry2Tf15hVEW5Fa5EEi94QAAAAAACAAAAAAAQZgAAAAEAACAAAAD5PiKhnYpNr6eivrtzgPK/3TIxK23HjZ+in9G1zHYgbAAAAAAOgAAAAAIAACAAAAAsxorgcTmu2Vh6fZSl2gzcKt9eRpU0KsSa/nq6eJUt2DAAAAD6mFSOX+6o1jsVL6IR2la7ptHSzKniaa0G+VdJOlF7XYyug9wTI7wR1RfvX2LiUjtAAAAAFwcvgJGXjSgzcZFiPxdzifG8te1UfO0WCJlSdhtrFnSVRur0FLczVNcnaTfuzZYjBLWFpeLnkFWEn5ZkaygxVw==</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAXpjXXdMeG06z+almP7A5vgAAAAACAAAAAAAQZgAAAAEAACAAAACyUPbhKlvo/fKTC2vjEWtAP1y8ogt+60wEksaSeh7J2AAAAAAOgAAAAAIAACAAAADoQN0gUGrkENejjiJwLrxR+j2pCx2ISfQBLJ+x9F+KYTAAAADWJcPii1Ay+7s1ddtUx12cyIptnOGTH9DeTWu1Yge8xxR/sxwZSz/iQCAIBuCi5f1AAAAAKTaWy5B4MUd/UH/HMVVjLxCjTKP7QIPix4UPR6CSpADU7/PcS4wlhGrQlTpYLuW1n6o3BGXLbiGrHbfrWuJ50g==</EncryptedPassword>
   </PropertyGroup>
 </Project>

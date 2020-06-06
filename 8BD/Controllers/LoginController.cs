@@ -146,7 +146,14 @@ namespace _8BD.Controllers
                 ViewBag.Danger = "Mail daha önce kullanılmış.";
                 return View("../Login/Register");
             }
-            _helper.PostMethod<User>(user, "/Users");
+            user.activationToken = "";
+       
+            user.lastLoginDate = DateTime.Now;
+            user.registerDate = DateTime.Now;
+            user.registerIp = "";
+           
+            
+            _helper.PostMethod<User>(user, "/Users/register");
             ViewBag.Message = "Kaydınız başarıyla oluşturuldu! Hadi kolay gelsin. Giriş yapabilirsiniz.";
             return View("../Login/Register");
         }
