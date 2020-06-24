@@ -181,3 +181,11 @@ section#tooltip > div > div > p:nth-child(odd)::first-letter {
 body {
     background-color: #fffef7;
 }
+.sidebar:hover{
+    text-decoration:none;
+
+}
+.list-group-item:hover{
+    background-color: dimgrey;
+    color:white;
+}

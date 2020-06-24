@@ -82,7 +82,31 @@ namespace _8BD.Helpers
 
             return deserializedobject.id;
         }
-       
+        public int GetLikedVote(int id) 
+        {
+
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/votes/countlike/" + id);
+            var restResponse = restClient.Get(restRequest);
+
+            var deserializedobject = JsonConvert.DeserializeObject<int>(restResponse.Content);
+
+            return deserializedobject;
+
+        }
+        public int GetUnLikedVote(int id)
+        {
+
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/votes/countunlike/" + id);
+            var restResponse = restClient.Get(restRequest);
+
+            var deserializedobject = JsonConvert.DeserializeObject<int>(restResponse.Content);
+
+            return deserializedobject;
+
+        }
+
 
         public Entry GetEntryById(int search)
         {

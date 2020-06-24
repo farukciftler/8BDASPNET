@@ -17,7 +17,7 @@ namespace _8BD.Controllers
         {
             _helper = helper;
         }
-        [HttpGet]
+        [HttpPost]
         public int LikeThis(int id)
         {
             Vote vote = new Vote();
@@ -40,7 +40,7 @@ namespace _8BD.Controllers
 
             return count;
         }
-        [HttpGet]
+        [HttpPost]
         public int UnLikeThis(int id)
         {
             Vote vote = new Vote();

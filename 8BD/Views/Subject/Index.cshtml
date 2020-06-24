@@ -82,22 +82,34 @@
             </p>
         </div>
         <div class="row" style="margin-left:4px; margin-bottom:-8px;">
-            @if (item.authorId == ViewBag.UserId || ViewBag.Level > 6)
+            @if (ViewBag.Level > 4)
             {
-            <a class="modbut" href="/entryedit/@item.id"><i class="far fa-edit "></i></a>
-            <a class="modbut" href="/entrydelete/@item.id"><i class="far fa-trash-alt "></i></a>
+                if (item.authorId == ViewBag.UserId || ViewBag.Level > 6)
+                {
+                    <a class="modbut" href="/entryedit/@item.id"><i class="far fa-edit "></i></a>
+                    <a class="modbut" href="/entrydelete/@item.id"><i class="far fa-trash-alt "></i></a>
+                }
 
-            <a name='' style=' ' value='Like' class='like oybuton' href='#like' id='like_@item.id'  hidden>
-                <i class='fas fa-thumbs-up  fa-sm'>
-                    (<span id='likes_@item.id'>$total_likes</span>)
-                </i>
-            </a>
+                <div style="margin-left:10px;">
+                    <a name='' style=' ' value='Like' class='like oybuton' href='#like' id='like_@item.id'>
+                        <i class='fas fa-thumbs-up  fa-sm'>
+                            (<span id=' '>@_helper.GetLikedVote(@item.id)</span>)
+                        </i>
+                    </a>
+                    <a name='' style=' ' value='Unlike' class='unlike oybuton' href='#unlike' id='unlike_@item.id'>
+                        <i class='fas fa-thumbs-down  fa-sm'>
+                            (<span id=' '>@_helper.GetUnLikedVote(@item.id)</span>)
+                        </i>
+                    </a>
+                </div>
+
+
+
 
             }
 
 
 
-            <a href="#" hidden><i class="far fa-thumbs-down"></i> ()</a>
         </div>
 
 
@@ -145,6 +157,7 @@
                     alert("Link Kopyalandı!");
 
                 }
+                
 
                 $(document).ready(function () {
                     // like and unlike click
@@ -161,65 +174,57 @@
                         } else {
                             type = 0;
                         }
-
-                        // AJAX Request
-                        $.ajax({
-                            url: '/includes/likeunlike.php',
-                            type: 'post',
-                            data: { postid: postid, type: type },
-                            dataType: 'json',
-                            success: function (data) {
-                                var likes = data['likes'];
-                                var unlikes = data['unlikes'];
-
-                                $("#likes_" + postid).text(likes);        // setting likes
-                                $("#unlikes_" + postid).text(unlikes);    // setting unlikes
-
-                                if (type == 1) {
-                                    $("#like_" + postid).css("color", "#ffa449");
-                                    $("#unlike_" + postid).css("color", "lightseagreen");
-
-
+                        if (type == 1) {
+                            $.ajax({
+                                type: "GET",
+                                url: "/Vote/UnLikeCount/" + postid,
+                                success: function (resultData) {
+                                    if (resultData > 0) {
+                                        resultData = resultData - 1;
+                                    }
+                                    document.getElementById("unlike_" + postid).innerHTML = "<i class='fas fa-thumbs-down  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
                                 }
-
-                                if (type == 0) {
-                                    $("#unlike_" + postid).css("color", "#ffa449");
-                                    $("#like_" + postid).css("color", "lightseagreen");
+                            });
+                            $.ajax({
+                                type: "POST",
+                                url: "/Vote/LikeThis",
+                                data: { id: postid },
+                                dataType: "text",
+                                success: function (resultData) {
+                                    document.getElementById(id).innerHTML = "<i class='fas fa-thumbs-up  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
                                 }
-
-
-                            }
-
-                        });
-                        //FAVORITES AJAX REQUEST
+                            });
+                        } else {
+                            $.ajax({
+                                type: "GET",
+                                url: "/Vote/LikeCount/" + postid,
+                                success: function (resultData) {
+                                    if (resultData > 0) {
+                                        resultData = resultData - 1;
+                                    }
+                                    document.getElementById("like_" + postid).innerHTML = "<i class='fas fa-thumbs-up  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
+                                }
+                            });
+                            $.ajax({
+                                type: "POST",
+                                url: "/Vote/UnLikeThis",
+                                data: { id: postid },
+                                dataType: "text",
+                                success: function (resultData) {
+                                    document.getElementById(id).innerHTML = "<i class='fas fa-thumbs-down  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
+                                }
+                            });
+                            
+                         
+                        }
+                        
 
 
 
 
                     });
 
-                    $(".favorite").click(function () {
-                        var id = this.id;   // Getting Button id
-                        var split_id = id.split("_");
-
-                        var text = split_id[0];
-                        var postid = split_id[1];  // postid
-                        var baslikid =<? php echo $baslikid; ?>;
-                        $.ajax({
-                            url: '/includes/favorite.php',
-                            type: 'post',
-                            data: { postid: postid, baslikid: baslikid },
-                            dataType: 'json',
-                            success: function (data) {
-                                var favorites = data['favorites'];
-
-
-                                $("#favorites_" + postid).text(favorites);        // setting likes
-
-
-                            }
-
-                        });
+                    
 
 
 
@@ -227,7 +232,7 @@
 
                     });
 
-                });
+               
 
                
             </script>
