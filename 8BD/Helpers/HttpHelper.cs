@@ -106,6 +106,18 @@ namespace _8BD.Helpers
             return deserializedobject;
 
         }
+        public int GetFavoritedVote(int id)
+        {
+
+            IRestClient restClient = new RestClient();
+            IRestRequest restRequest = new RestRequest(configuration["ApiAddress"] + "/votes/countfavorite/" + id);
+            var restResponse = restClient.Get(restRequest);
+
+            var deserializedobject = JsonConvert.DeserializeObject<int>(restResponse.Content);
+
+            return deserializedobject;
+
+        }
 
 
         public Entry GetEntryById(int search)

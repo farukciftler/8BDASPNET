@@ -23,6 +23,7 @@ namespace _8BD.Controllers
             Vote vote = new Vote();
             vote.entryId = id;
             vote.type = 1;
+            vote.authorId = 0;
             vote.date = DateTime.Now;
             vote.userId = Convert.ToInt32(HttpContext.Session.GetInt32("_id"));
             var c = _helper.PostMethod<int>(vote, "/votes/likevote");
@@ -40,12 +41,14 @@ namespace _8BD.Controllers
 
             return count;
         }
+ 
         [HttpPost]
         public int UnLikeThis(int id)
         {
             Vote vote = new Vote();
             vote.entryId = id;
             vote.type = 0;
+            vote.authorId = 0;
             vote.date = DateTime.Now;
             vote.userId = Convert.ToInt32(HttpContext.Session.GetInt32("_id"));
             var c = _helper.PostMethod<int>(vote, "/votes/unlikevote");
@@ -63,6 +66,23 @@ namespace _8BD.Controllers
 
             return count;
         }
+
+        [HttpPost]
+        public int FavoriteThis(int id)
+        {
+            Vote vote = new Vote();
+            vote.entryId = id;
+            vote.type = 2;
+            vote.authorId = 0;
+            vote.date = DateTime.Now;
+            vote.userId = Convert.ToInt32(HttpContext.Session.GetInt32("_id"));
+            var c = _helper.PostMethod<int>(vote, "/votes/favoritevote");
+
+
+            return c;
+        }
+
+      
     }
 }
 
