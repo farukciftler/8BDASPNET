@@ -26,6 +26,16 @@ namespace _8BD.Controllers
             ViewBag.UserId = HttpContext.Session.GetInt32("_id");
             return View("~/Views/Subject/Button/EntryEdit.cshtml");
         }
+        [HttpGet("entrynotice/{id}")]
+        public IActionResult EntryNotice(int id)
+        {
+            ViewBag.id = id;
+            ViewBag.Name = HttpContext.Session.GetString("_username");
+            ViewBag.Pass = HttpContext.Session.GetString("_password");
+            ViewBag.Pass = HttpContext.Session.GetInt32("_level");
+            ViewBag.UserId = HttpContext.Session.GetInt32("_id");
+            return View("~/Views/Subject/Button/EntryNotice.cshtml");
+        }
         [HttpGet("entrytransfer/{id}")]
         public IActionResult EntryTransfer(int id)
         {

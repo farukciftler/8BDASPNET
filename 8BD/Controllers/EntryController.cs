@@ -56,6 +56,19 @@ namespace _8BD.Controllers
             return Redirect($"/subject?search={_helper.GetSubjectNameById(final.subjectId)}");
         }
         [HttpPost]
+        public ActionResult Notice(int entryid, int userid, int subjectid, string notice)
+        {
+
+            EntryNotice entryNotice = new EntryNotice();
+            entryNotice.id = 0;
+            entryNotice.entryId = entryid;
+            entryNotice.noticedById = userid;
+            entryNotice.notice = notice;
+            var apiendpoint = $"/entrynotices/notice";
+            _helper.PostMethod<EntryNotice>(entryNotice, apiendpoint);
+            return Redirect($"/subject?search={_helper.GetSubjectNameById(subjectid)}");
+        }
+        [HttpPost]
         public ActionResult Delete(int id, string reason )
         {
             if (reason == null)

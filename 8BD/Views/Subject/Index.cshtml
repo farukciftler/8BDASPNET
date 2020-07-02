@@ -88,25 +88,26 @@
                 {
                     <a class="modbut" href="/entryedit/@item.id"><i class="far fa-edit "></i></a>
                     <a class="modbut" href="/entrydelete/@item.id"><i class="far fa-trash-alt "></i></a>
+                    <a class="modbut" href="/entrynotice/@item.id"><i class="fas fa-exclamation-triangle"></i></a>
                 }
 
-        <div style="margin-left:10px;">
-            <a name='' style=' ' value='Like' class='like oybuton' href='#like' id='like_@item.id'>
-                <i class='fas fa-thumbs-up  fa-sm'>
-                    (<span id=' '>@_helper.GetLikedVote(@item.id)</span>)
-                </i>
-            </a>
-            <a name='' style=' ' value='Unlike' class='unlike oybuton' href='#unlike' id='unlike_@item.id'>
-                <i class='fas fa-thumbs-down  fa-sm'>
-                    (<span id=' '>@_helper.GetUnLikedVote(@item.id)</span>)
-                </i>
-            </a>
-            <a name='' style=' ' value='Favorite' class='favorite oybuton' href='#favorite' id='favorite_@item.id'>
-                <i class='fas fa-star  fa-sm'>
-                    (<span id=' '>@_helper.GetFavoritedVote(@item.id)</span>)
-                </i>
-            </a>
-        </div>
+                <div style="margin-left:10px;">
+                    <a name='' style=' ' value='Like' class='like oybuton' href='#like' id='like_@item.id'>
+                        <i class='fas fa-thumbs-up  fa-sm'>
+                            (<span id=' '>@_helper.GetLikedVote(@item.id)</span>)
+                        </i>
+                    </a>
+                    <a name='' style=' ' value='Unlike' class='unlike oybuton' href='#unlike' id='unlike_@item.id'>
+                        <i class='fas fa-thumbs-down  fa-sm'>
+                            (<span id=' '>@_helper.GetUnLikedVote(@item.id)</span>)
+                        </i>
+                    </a>
+                    <a name='' style=' ' value='Favorite' class='favorite oybuton' href='#favorite' id='favorite_@item.id'>
+                        <i class='fas fa-star  fa-sm'>
+                            (<span id=' '>@_helper.GetFavoritedVote(@item.id)</span>)
+                        </i>
+                    </a>
+                </div>
 
 
 

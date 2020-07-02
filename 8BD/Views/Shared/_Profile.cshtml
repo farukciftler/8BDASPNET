@@ -14,7 +14,7 @@
     <header>
         @await Html.PartialAsync("Components/Navbar")
     </header>
-    <div class="container">
+    <div class="container"> 
         <main role="main" class="pb-3">
             <div class="row">
                 <div class="col-md-3">
@@ -25,7 +25,7 @@
                         <input style="max-width:100px; max-height:30px;" type="file" value="Dosya" name="fileToUpload" id="fileToUpload">
                         <input style="max-width:100px; max-height:30px;" type="submit" value="Yükle" name="submit">
                     </form>
-                    <p style="text-align:center; font-size:17px;">loquat</p>
+                    <p style="text-align:center; font-size:17px;">@Model.username</p>
                     <p style="text-align:center; margin-top:-20px;">admin</p>
                     <a href="" > <button style="width:100%;" type="button" class="btn btn-dark">Piştle!</button></a>
                     <form class="" action="index.html" method="post">

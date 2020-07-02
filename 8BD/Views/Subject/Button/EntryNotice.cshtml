@@ -1,0 +1,38 @@
+﻿@using _8BD.Helpers;
+@inject HttpHelper _helper;
+@inject RegexHelper _regex;
+@{
+    ViewData["Title"] = "EntryEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = ViewBag.id;
+    var userid = ViewBag.UserId;
+    var entry = _helper.GetEntryById(id);
+    var c = @_helper.GetUsername(entry.authorId);
+    var subject = _helper.GetSubjectNameById(@entry.subjectId);
+
+}
+
+<a href="/subject?search=@subject"><h4 class="subject-header"><b>@subject  </b></h4></a>
+<hr />
+<a style="float:right; font-size:12px;" class="monospace" href="/entry/@ViewBag.Subject/@entry.id">#@entry.id </a>
+<br />
+<p class="entry">@Html.Raw(_regex.PregReplace(@entry.entry, _regex.patterns, _regex.replacements))</p>
+
+<div class="row d-flex flex-row-reverse" style="margin-right:5px;">
+    <a href="/entry/@ViewBag.Subject/@entry.id"><p class="entry-date monospace">@entry.createDate.ToString("dd.MM.yyyy H:mm")</p></a> | <p class="monospace entry-author">
+        @if (c != null)
+        {@c}
+    </p>
+</div>
+<h2 class="Helvetica"> Tanımı Şikayet Et</h2>
+<form asp-controller="entry" asp-action="notice" method="post">
+
+
+    <label for="form_message" class="Helvetica">Şikayet Sebebi:</label>
+    <input type="text" name="entryid" value="@entry.id" hidden />
+    <input type="text" name="userid" value="@userid" hidden />
+    <input type="type" name="subjectid" value="@entry.subjectId" hidden/>
+    <textarea type="text" name="notice" id="girdi-area"  class="md-textarea form-control" rows="3"></textarea>
+    <a href="/Subject?search=@_helper.GetSubjectNameById(@entry.subjectId)" style="margin-right:5px;"><button class="btn btn-dark Helvetica" style="margin-top: 10px;  float: right;">Vazgeç</button></a>
+    <button type="submit" class="btn btn-dark Helvetica" style="margin-top: 10px;  float: right;">Gönder</button>
+</form>
