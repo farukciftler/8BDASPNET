@@ -10,38 +10,55 @@
 <p class="entry-date">xx/xx/xxxx</p>
 <hr class="entry-hr">
 <br />
-<form class="" asp-controller="Entry" asp-action="Addentry" method="post">
 
-
-
+@if(ViewBag.Level > 6)
+{
+<form class="" asp-controller="announcement" asp-action="Add" method="post">
 
     <br><br>
 
-    <label for="" style="">Tanım: </label>
+    <label for="" style="">Duyuru: </label>
 
-    <textarea type="text" name="entry" id="girdi-area" value="" class="md-textarea form-control" rows="3" required></textarea>
+    <textarea type="text" name="announce" id="girdi-area" value="" class="md-textarea form-control" rows="3" required></textarea>
 
 
 
-    <button id="girdi-area2" type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left" onclick="foo()">b</button>
-    <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px; float: left">i</button>
-    <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">bkz</button>
-    <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">gbkz</button>
-    <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">*</button>
-    <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">alıntı</button>
-    <button type="button" class="btn btn-dark" style="margin-top: 10px; margin-right: 2px;  float: left">link</button>
-    <button type="submit" class="btn btn-dark" style="margin-top: 10px;  float: right;">Gönder</button>
+    <button id="girdi-area2" type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('b');">b</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px; float: left" onClick="formatText ('i');">i</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('bkz');">bkz</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('gbkz');">gbkz</button>
+    <!-- <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('u');">*</button>-->
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="alinti();">alıntı</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="spoiler();">spoiler</button>
+    <button type="submit" class="btn btn-dark Helvetica" style="margin-top: 10px;  float: right;">Gönder</button>
 
 </form>
+}
 
 <script>
 
-    function foo() {
-        let sel = window.getSelection();
-
-        sel.modify('extend', 'forward', select.value);
-        alert(sel);
-        var selRange = sel.getRangeAt(0);
-        // do stuff with the range
+    function formatText(tag) {
+        var myTextArea = document.getElementById('girdi-area');
+        var myTextAreaValue = myTextArea.value;
+        var selected_txt = myTextAreaValue.substring(myTextArea.selectionStart, myTextArea.selectionEnd);
+        var before_txt = myTextAreaValue.substring(0, myTextArea.selectionStart);
+        var after_txt = myTextAreaValue.substring(myTextArea.selectionEnd, myTextAreaValue.length);
+        myTextArea.value = before_txt + '(' + tag + ': ' + selected_txt + ')' + after_txt;
+    }
+    function alinti() {
+        var myTextArea = document.getElementById('girdi-area');
+        var myTextAreaValue = myTextArea.value;
+        var selected_txt = myTextAreaValue.substring(myTextArea.selectionStart, myTextArea.selectionEnd);
+        var before_txt = myTextAreaValue.substring(0, myTextArea.selectionStart);
+        var after_txt = myTextAreaValue.substring(myTextArea.selectionEnd, myTextAreaValue.length);
+        myTextArea.value = before_txt + '----(gbkz: alıntı)---\n\n' + selected_txt + '\n\n----(gbkz: alıntı)---\n\n' + after_txt;
+    }
+    function spoiler() {
+        var myTextArea = document.getElementById('girdi-area');
+        var myTextAreaValue = myTextArea.value;
+        var selected_txt = myTextAreaValue.substring(myTextArea.selectionStart, myTextArea.selectionEnd);
+        var before_txt = myTextAreaValue.substring(0, myTextArea.selectionStart);
+        var after_txt = myTextAreaValue.substring(myTextArea.selectionEnd, myTextAreaValue.length);
+        myTextArea.value = before_txt + '--! (gbkz: spoiler) !--\n\n' + selected_txt + '\n\n--! (gbkz: spoiler) !--\n\n' + after_txt;
     }
 </script>
