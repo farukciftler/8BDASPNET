@@ -1,0 +1,61 @@
+﻿@using _8BD.Helpers;
+@inject HttpHelper _helper;
+@{
+    ViewData["Title"] = "NewMessage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="Helvetica">Yeni Posta Yolla</h4>
+<hr />
+
+
+<form asp-controller="message" asp-action="send" method="post">
+
+
+    <label for="" style="" class="Helvetica">Yollanan Yazar: </label>
+    <textarea type="text" name="receiver" class="md-textarea form-control Helvetica" rows="1" required></textarea>
+
+    <label for="" style="" class="Helvetica">Mesaj: </label>
+
+    <textarea type="text" name="msg" id="girdi-area" value="" class="md-textarea form-control Helvetica" rows="3" required></textarea>
+
+
+
+    <button id="girdi-area2" type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('b');">b</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px; float: left" onClick="formatText ('i');">i</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('bkz');">bkz</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('gbkz');">gbkz</button>
+    <!-- <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="formatText ('u');">*</button>-->
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="alinti();">alıntı</button>
+    <button type="button" class="btn btn-dark Helvetica" style="margin-top: 10px; margin-right: 2px;  float: left" onClick="spoiler();">spoiler</button>
+    <button type="submit" class="btn btn-dark Helvetica" style="margin-top: 10px;  float: right;">Gönder</button>
+
+</form>
+
+<script>
+
+    function formatText(tag) {
+        var myTextArea = document.getElementById('girdi-area');
+        var myTextAreaValue = myTextArea.value;
+        var selected_txt = myTextAreaValue.substring(myTextArea.selectionStart, myTextArea.selectionEnd);
+        var before_txt = myTextAreaValue.substring(0, myTextArea.selectionStart);
+        var after_txt = myTextAreaValue.substring(myTextArea.selectionEnd, myTextAreaValue.length);
+        myTextArea.value = before_txt + '(' + tag + ': ' + selected_txt + ')' + after_txt;
+    }
+    function alinti() {
+        var myTextArea = document.getElementById('girdi-area');
+        var myTextAreaValue = myTextArea.value;
+        var selected_txt = myTextAreaValue.substring(myTextArea.selectionStart, myTextArea.selectionEnd);
+        var before_txt = myTextAreaValue.substring(0, myTextArea.selectionStart);
+        var after_txt = myTextAreaValue.substring(myTextArea.selectionEnd, myTextAreaValue.length);
+        myTextArea.value = before_txt + '----(gbkz: alıntı)---\n\n' + selected_txt + '\n\n----(gbkz: alıntı)---\n\n' + after_txt;
+    }
+    function spoiler() {
+        var myTextArea = document.getElementById('girdi-area');
+        var myTextAreaValue = myTextArea.value;
+        var selected_txt = myTextAreaValue.substring(myTextArea.selectionStart, myTextArea.selectionEnd);
+        var before_txt = myTextAreaValue.substring(0, myTextArea.selectionStart);
+        var after_txt = myTextAreaValue.substring(myTextArea.selectionEnd, myTextAreaValue.length);
+        myTextArea.value = before_txt + '--! (gbkz: spoiler) !--\n\n' + selected_txt + '\n\n--! (gbkz: spoiler) !--\n\n' + after_txt;
+    }
+</script>

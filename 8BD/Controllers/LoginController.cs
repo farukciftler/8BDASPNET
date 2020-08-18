@@ -40,6 +40,8 @@ namespace _8BD.Controllers
                 HttpContext.Session.SetInt32(SessionId, user.id);
                 HttpContext.Session.SetString(SessionName, username);
                 HttpContext.Session.SetString(SessionPass, token);
+                var userid = HttpContext.Session.GetInt32("_id");
+                _helper.GetApiEndpoint<User>("/users/lastloginupdate/"+userid);
                 ViewBag.Message = "Başarıyla giriş yaptınız";
             }
             else

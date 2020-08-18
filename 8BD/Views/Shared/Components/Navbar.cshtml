@@ -11,17 +11,22 @@
         </button>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-comment-alt"></i> posta</a></li>
+                @if (ViewBag.Name != null)
+                {
+                    <li class="nav-item"><a href="/message/index" class="nav-link"><i class="far fa-comment-alt"></i> posta</a></li>
+                }
+              
                 <li class="nav-item"><a href="http://sinemaguncesi.com" class="nav-link" target="_blank"><i class="fas fa-quote-left"></i> sinemagüncesi</a></li>
                 <li class="nav-item"><a href="/announcements" class="nav-link"><i class="fas fa-bullhorn"></i> duyurular</a></li>
                 @if (ViewBag.Name == null)
-                    {
-                
-                <li class="nav-item mobileShow" ><a href="/Login/IndexPage" class="nav-link"><i class="fas fa-sign-in-alt"></i>    giriş </a> </li>
-                <li class="nav-item mobileShow" > <a href="/Login/Register" class="nav-link "><i class="fas fa-angle-double-right"></i>    kayıt ol</a> </li>
-                    }
-                else{
-            <a asp-controller="Login" asp-action="Logout" class="nav-link mobileShow"> <li class="nav-item " class="dropdown-item Helvetica"><i class="fas fa-sign-out-alt"></i> <b>çıkış</b></li></a>
+                {
+
+                    <li class="nav-item mobileShow"><a href="/Login/IndexPage" class="nav-link"><i class="fas fa-sign-in-alt"></i>    giriş </a> </li>
+                    <li class="nav-item mobileShow"> <a href="/Login/Register" class="nav-link "><i class="fas fa-angle-double-right"></i>    kayıt ol</a> </li>
+                }
+                else
+                {
+                    <a asp-controller="Login" asp-action="Logout" class="nav-link mobileShow"> <li class="nav-item " class="dropdown-item Helvetica"><i class="fas fa-sign-out-alt"></i> <b>çıkış</b></li></a>
                 }
             </ul>
 
@@ -55,7 +60,10 @@
                     <div class="dropdown-menu">
                         <!--<a class="dropdown-item Helvetica" asp-controller="Profile" asp-action="Index"><i class="fas fa-user-circle"></i> benlik</a>
 
-            <a class="dropdown-item Helvetica" href="#"><i class="fas fa-cog"></i> ayarlar</a>    -->
+    <a class="dropdown-item Helvetica" href="#"><i class="fas fa-cog"></i> ayarlar</a>    -->
+                        <a class="dropdown-item Helvetica" href="/ego"><i class="far fa-user"></i>  @ViewBag.Name <span class="caret"></span></a>
+                        <a class="dropdown-item Helvetica" href="/admin"><i class="far fa-user"></i>  Admin <span class="caret"></span></a>
+
                         <a class="dropdown-item Helvetica" asp-controller="Login" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> <b>çıkış</b></a>
                     </div>
                 </div>

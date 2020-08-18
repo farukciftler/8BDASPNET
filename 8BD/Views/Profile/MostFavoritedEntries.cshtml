@@ -1,0 +1,213 @@
+﻿@using _8BD.Helpers;
+@inject HttpHelper _helper;
+@inject RegexHelper _regex;
+@inject PaginationHelper _pagination;
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = @ViewBag.Subject;
+    Layout = "~/Views/Shared/_Profile.cshtml";
+        var a = ViewBag.pageIndex + 1;
+        var b = ViewBag.pageIndex - 1;
+        var userid = ViewBag.UserId;
+        var username = _helper.GetUsername(ViewBag.authorId);
+    
+
+}
+    <h4 class="Helvetica">@username - En Çok Favorilenen Tanımları</h4>
+<div style='float:right; margin-bottom:auto; margin-right:5px;' class='dropdown'>
+
+  
+     
+
+    @if (@b < 0)
+    {
+        <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-left'></i></button>
+    }
+    else
+    {
+        <a href="/profile/mostfavoritedentries?authorId=@ViewBag.authorId&pageIndex=@b"> <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-left'></i></button></a>
+    }
+
+    <button id='sidebar_button ' style='margin-left:1px; margin-right:1px; margin-bottom:0px; min-width:60px; height:31px;' role='button' type='button' class='btn btn-sm btn-default dropdown-toggle sidebarsayfalar btn-outline-secondary' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>@a  </button>
+    <div id='dropdown-side' class='dropdown-menu ' aria-labelledby='dropdownMenuButton' style='min-width:10px;'>
+
+        @for (int i = 0; i < @_pagination.getMostFavoritedEntriesPageNumber(ViewBag.authorId); i++)
+        {
+            var c = i + 1;
+            <a id='' class='dropdown-item pagination_link ' href='/profile/mostfavoritedentries?authorId=@ViewBag.authorId&pageIndex=@i'>@c</a>
+        }
+
+
+    </div>
+    @if (@a == @_pagination.getMostFavoritedEntriesPageNumber(@ViewBag.authorId))
+    {
+        <button id='sol' class='btn btn-sm eksilt btn-outline-secondary'><i class='fa fa-angle-right'></i></button>
+    }
+    else
+    {
+        <a href="/profile/mostfavoritedentries?authorId=@ViewBag.authorId&pageIndex=@a"><button id='sag' class='btn btn-sm artir btn-outline-secondary'><i class='fa fa-angle-right'></i></button></a>
+    }
+
+</div>
+<br />
+
+
+@if (ViewBag.Count != 0 && ViewData["Entries"] != null)
+{
+
+
+
+    @foreach (var item in (IEnumerable<Entry>)ViewData["Entries"])
+    {
+        <a href="/subject?search=@_helper.GetSubjectNameById(item.subjectId)"><h4 class="subject-header"><b>@_helper.GetSubjectNameById(item.subjectId) </b></h4></a>
+        <hr>
+        <div class="row" style="margin-left:4px; margin-top:-16px;">
+            
+            @if (ViewBag.Level > 6)
+            {
+                <a class="modbut" href="/subjectedit/@item.subjectId"><i class="far fa-edit "></i></a>
+                <a class="modbut" href="/subjectdelete/@item.subjectId"><i class="far fa-trash-alt "></i></a>
+
+            }
+
+            <!-- <a class="modbut" href="/subjecthide/@ViewBag.SubjectId"><i class="far fa-eye-slash "></i></a>-->
+        </div>
+
+        var c = @_helper.GetUsername(item.authorId);
+        <a style="float:right; font-size:12px;" class="monospace" href="/entry/@_helper.GetSubjectNameById(item.subjectId)/@item.id">#@item.id </a>
+        <br />
+        <p class="entry">@Html.Raw(_regex.PregReplace(@item.entry, _regex.patterns, _regex.replacements))</p>
+
+        <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
+            <a href="/entry/@_helper.GetSubjectNameById(item.subjectId)/@item.id"><p class="entry-date monospace">@item.createDate.ToString("dd.MM.yyyy H:mm")</p></a> | <a href="/profile/@_helper.GetUsername(@item.authorId)">
+    <p class="monospace entry-author">
+        @if (c != null)
+        {@c}
+    </p>
+</a>
+        </div>
+        <div class="row" style="margin-left:4px; margin-bottom:-8px;">
+            @if (ViewBag.Level > 4)
+            {
+                if (item.authorId == ViewBag.UserId || ViewBag.Level > 6)
+                {
+                    <a class="modbut" href="/entryedit/@item.id"><i class="far fa-edit "></i></a>
+                    <a class="modbut" href="/entrydelete/@item.id"><i class="far fa-trash-alt "></i></a>
+                    <a class="modbut" href="/entrynotice/@item.id"><i class="fas fa-exclamation-triangle"></i></a>
+                }
+
+                <div style="margin-left:10px;">
+                    <a name='' style=' ' value='Like' class='like oybuton' href='#like' id='like_@item.id'>
+                        <i class='fas fa-thumbs-up  fa-sm'>
+                            (<span id=' '>@item.entryLike</span>)
+                        </i>
+                    </a>
+                    <a name='' style=' ' value='Unlike' class='unlike oybuton' href='#unlike' id='unlike_@item.id'>
+                        <i class='fas fa-thumbs-down  fa-sm'>
+                            (<span id=' '>@item.entryUnlike</span>)
+                        </i>
+                    </a>
+                    <a name='' style=' ' value='Favorite' class='favorite oybuton' href='#favorite' id='favorite_@item.id'>
+                        <i class='fas fa-star  fa-sm'>
+                            (<span id=' '>@item.entryFavorite</span>)
+                        </i>
+                    </a>
+                </div>
+
+
+
+
+            }
+
+
+
+        </div>
+
+
+        <br />
+        <hr class="entry-hr">
+    }
+
+}
+
+<script>
+
+    $(document).ready(function () {
+        // like and unlike click
+        $(".like, .unlike, .favorite").click(function () {
+            var id = this.id;   // Getting Button id
+            var split_id = id.split("_");
+
+            var text = split_id[0];
+            var postid = split_id[1];  // postid
+            // Finding click type
+            var type = 0;
+            if (text == "like") {
+                type = 1;
+            } else if (text == "favorite") {
+                type = 2;
+            }
+            else {
+                type = 0;
+            }
+            if (type == 1) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Vote/UnLikeCount/" + postid,
+                    success: function (resultData) {
+                        if (resultData > 0) {
+                            resultData = resultData - 1;
+                        }
+                        document.getElementById("unlike_" + postid).innerHTML = "<i class='fas fa-thumbs-down  fa-sm'>(<span id=' '>" + resultData
+                            + "</span>) </i >";
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "/Vote/LikeThis",
+                    data: { id: postid },
+                    dataType: "text",
+                    success: function (resultData) {
+                        document.getElementById(id).innerHTML = "<i class='fas fa-thumbs-up  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
+                    }
+                });
+            } else if (type == 2) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Vote/FavoriteThis",
+                    data: { id: postid },
+                    dataType: "text",
+                    success: function (resultData) {
+                        document.getElementById(id).innerHTML = "<i class='fas fa-star  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: "GET",
+                    url: "/Vote/LikeCount/" + postid,
+                    success: function (resultData) {
+                        if (resultData > 0) {
+                            resultData = resultData - 1;
+                        }
+                        document.getElementById("like_" + postid).innerHTML = "<i class='fas fa-thumbs-up  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "/Vote/UnLikeThis",
+                    data: { id: postid },
+                    dataType: "text",
+                    success: function (resultData) {
+                        document.getElementById(id).innerHTML = "<i class='fas fa-thumbs-down  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
+                    }
+                });
+            }
+        });
+    });
+
+
+
+
+</script>

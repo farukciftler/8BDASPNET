@@ -49,8 +49,6 @@
 <a href="/subject?search=@ViewBag.Subject"><h4 class="subject-header"><b>@ViewBag.Subject  </b></h4></a>
 @if (ViewBag.Count != 0 && ViewData["Entries"] != null)
 {
-
-
     <hr>
     <div class="row" style="margin-left:4px; margin-top:-16px;">
         <a class="modbut" onclick="CopyLink();" title="Linki kopyala" href="#"><i class="fas fa-link"></i></a>
@@ -63,23 +61,20 @@
         
             <!-- <a class="modbut" href="/subjecthide/@ViewBag.SubjectId"><i class="far fa-eye-slash "></i></a>-->
         </div>
-
-
-
     @foreach (var item in (IEnumerable<Entry>)ViewData["Entries"])
     {
-
-
         var c = @_helper.GetUsername(item.authorId);
         <a style="float:right; font-size:12px;" class="monospace" href="/entry/@ViewBag.Subject/@item.id">#@item.id </a>
         <br />
         <p class="entry">@Html.Raw(_regex.PregReplace(@item.entry, _regex.patterns, _regex.replacements))</p>
    
         <div class="row d-flex flex-row-reverse" style="margin-right:5px;">
-            <a href="/entry/@ViewBag.Subject/@item.id"><p class="entry-date monospace">@item.createDate.ToString("dd.MM.yyyy H:mm")</p></a> | <p class="monospace entry-author">
-                @if (c != null)
-                {@c}
-            </p>
+            <a href="/entry/@ViewBag.Subject/@item.id"><p class="entry-date monospace">@item.createDate.ToString("dd.MM.yyyy H:mm")</p></a> | <a href="/profile/@_helper.GetUsername(@item.authorId)">
+    <p class="monospace entry-author">
+        @if (c != null)
+        {@c}
+    </p>
+</a>
         </div>
         <div class="row" style="margin-left:4px; margin-bottom:-8px;">
             @if (ViewBag.Level > 4)
@@ -90,35 +85,25 @@
                     <a class="modbut" href="/entrydelete/@item.id"><i class="far fa-trash-alt "></i></a>
                     <a class="modbut" href="/entrynotice/@item.id"><i class="fas fa-exclamation-triangle"></i></a>
                 }
-
                 <div style="margin-left:10px;">
                     <a name='' style=' ' value='Like' class='like oybuton' href='#like' id='like_@item.id'>
                         <i class='fas fa-thumbs-up  fa-sm'>
-                            (<span id=' '>@_helper.GetLikedVote(@item.id)</span>)
+                            (<span id=' '>@item.entryLike</span>)
                         </i>
                     </a>
                     <a name='' style=' ' value='Unlike' class='unlike oybuton' href='#unlike' id='unlike_@item.id'>
                         <i class='fas fa-thumbs-down  fa-sm'>
-                            (<span id=' '>@_helper.GetUnLikedVote(@item.id)</span>)
+                            (<span id=' '>@item.entryUnlike</span>)
                         </i>
                     </a>
                     <a name='' style=' ' value='Favorite' class='favorite oybuton' href='#favorite' id='favorite_@item.id'>
                         <i class='fas fa-star  fa-sm'>
-                            (<span id=' '>@_helper.GetFavoritedVote(@item.id)</span>)
+                            (<span id=' '>@item.entryFavorite</span>)
                         </i>
                     </a>
                 </div>
-
-
-
-
             }
-
-
-
         </div>
-
-
                     <br />
                     <hr class="entry-hr">
                 }
@@ -143,18 +128,15 @@
                 }
                 else if (ViewData["Entries"] != null)
                 {
-
                     <br>
                     <h4 class="monospace">Böyle bir başlık bulunmamaktadır.</h4>
                     <h4 class="monospace">Başlık açmak için yazar olmanız gerekiyor. Lütfen üye girişi yapınız.</h4>
                 }
             }
-
             <script>
                 function CopyLink() {
                     var dummy = document.createElement('input'),
-                        text = window.location.href;
-
+                    text = window.location.href;
                     document.body.appendChild(dummy);
                     dummy.value = text;
                     dummy.select();
@@ -163,8 +145,6 @@
                     alert("Link Kopyalandı!");
 
                 }
-                
-
                 $(document).ready(function () {
                     // like and unlike click
                     $(".like, .unlike, .favorite").click(function () {
@@ -203,11 +183,9 @@
                                 dataType: "text",
                                 success: function (resultData) {
                                     document.getElementById(id).innerHTML = "<i class='fas fa-thumbs-up  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
-                                }
-                            });
+                                }});
                         } else if (type == 2)
-                        {
-                            
+                        {   
                             $.ajax({
                                 type: "POST",
                                 url: "/Vote/FavoriteThis",
@@ -218,7 +196,6 @@
                                 }
                             });
                         }
-
                         else {
                             $.ajax({
                                 type: "GET",
@@ -238,26 +215,7 @@
                                 success: function (resultData) {
                                     document.getElementById(id).innerHTML = "<i class='fas fa-thumbs-down  fa-sm'>(<span id=' '>" + resultData + "</span>) </i >";
                                 }
-                            });
-                            
-                         
-                        }
-                        
-
-
-
-
+                            });}
                     });
-
-                    
-
-
-
-
-
-                    });
-
-               
-
-               
+                });        
             </script>
